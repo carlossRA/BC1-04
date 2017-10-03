@@ -5,13 +5,28 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+/*-- Clase terreno --
+ * 
+ * En esta clase definimos el objeto terreno y sus atributos.
+ * 
+ *  */
+
 public class terreno {
 	int filas,columnas;
 	casilla cas [][] ;
 	int xt=0;
 	int yt=0;
 	int k=0;
-	//
+	
+	/* -- Variables --
+	 * 
+	 * c = representa la columna
+	 * f = representa la fila
+	 * max= representa la cantidad maxima que puede haber en una casilla
+	 * movimientosPosibles = es un array de movimientos posibles que podemos hacer en una determinada posicion del tablero.
+	 * 
+	 * */
+	
 	int max=0;
 	int c=0;
 	int f=0;
@@ -19,7 +34,14 @@ public class terreno {
 	public terreno(casilla cas[][]) 
 	{
 		this.cas=cas;
-	}	
+	}
+	
+	/*-- Metodo crearTerreno --
+	 * 
+	 * nos permite crear un terreno con unas dimensiones especificas.
+	 *  
+	 *  */
+	
 	public void crearTerreno() 
 	{
 		for(int i=0;i<cas.length;i++) 
@@ -28,6 +50,13 @@ public class terreno {
     			cas[i][j]=new casilla(Integer.parseInt(JOptionPane.showInputDialog("Introduzca cantidad casilla "+i+" "+j)),i,j); 
     		}
 	}
+	
+	/*-- Metodo leerTerreno --
+	 * 
+	 * nos permite leer un fichero con los datos especificos de un terreno para después crearlo.
+	 *  
+	 *  */
+	
 	public void leerTerreno() throws FileNotFoundException
 	{
 		File file=new File("terreno.txt");
@@ -47,10 +76,18 @@ public class terreno {
 				
 		datos.close();
 	}
+	
 	public void obtenerNuevoTerreno()
 	{
 		
 	}
+	
+	/*-- Metodo imprimirTerreno --
+	 * 
+	 * Imprimimos por consola la cantidad que hay en cada casilla de un terreno ya creado.
+	 *  
+	 *  */
+	
 	public void imprimirTerreno() {
 		System.out.println(xt+" "+yt+" "+k+" "+max+" "+c+" "+f);
 		for(int i=0;i<cas.length;i++) {
@@ -62,17 +99,19 @@ public class terreno {
 		}
 	}
 	
+	/*-- Metodo MovimientosValidos --
+	 * 
+	 * calculamos los movimientos que son validos y los que no en cada situación.
+	 *  
+	 *  */
+	
 	 public void MovimientosValidos() {
 	     
-         
 		// Inicializamos array de flags de movimiento
 	    	for(int i = 0; i < 4; i++){
 	    		MovimientosPosibles[i] = 0;
 	    	}
-	    	
-	    	
-	    			
-	    			
+	  
 	    			if((xt==0||xt==(cas.length-1))||(yt==0||yt==(cas[1].length-1))){
 	    				if((xt==0)){
 	    					if(yt==0){
@@ -132,6 +171,13 @@ public class terreno {
 	    	
 	    	
 	    }
+	 
+	 /*-- Metodo mostrarMovimientosPosibles --
+	  * 
+	  * mostramos los movimientos que son posibles en ese estado.
+	  *  
+	  *  */
+	
 	 public void mostrarMovimientosPosibles(){
          
 	        System.out.print("\nLos movimientos válidos son: \n\n");
@@ -141,6 +187,13 @@ public class terreno {
 	        if(MovimientosPosibles[2] == 1) System.out.println("Arriba");
 	        if(MovimientosPosibles[3] == 1) System.out.println("Abajo");
 	    }
+	 
+	 /*-- Metodo generarAcción --
+	  * 
+	  * generamos un movimiento de forma aleatoria y lo imprimimos por pantalla.
+	  *  
+	  *  */
+	 
 	public void generarAccion()
 	{	casilla aux;
 		MovimientosValidos();
@@ -159,6 +212,13 @@ public class terreno {
 			System.out.println("Abajo");
 		}
 	}
+	
+	/*-- Metodo decidirAleatorio --
+	 * 
+	 * Generamos un numero aleatorio en función de los movimientos posibles que tengamos.
+	 *  
+	 *  */
+	
 	private int decidirAleatorio(int[] movimientosPosibles) {
     	Random rn=new Random();
     	int sel=rn.nextInt(4);

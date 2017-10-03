@@ -1,4 +1,8 @@
-
+/*-- Clase casilla --
+ * 
+ * En esta clase definimos el objeto casilla y sus atributos.
+ * 
+ *  */
 public class casilla {
 	int cantidad=0;
 	int fila=0;
@@ -11,6 +15,11 @@ public class casilla {
 		this.columna=columna;
 	}
 	
+	/* -- Metodo getCantidad() --
+	 * 
+	 * Este metodo nos devuelve la cantidad que hay en una casilla
+	 * 
+	 * */
 	public int getCantidad()
 	{
 		return this.cantidad;
