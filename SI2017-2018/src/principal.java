@@ -7,6 +7,7 @@ public class principal {
 		int opcion=0;
 		int filas=0;
 		int columnas=0;
+		//
 		casilla[][] cas=null;
 		terreno ter=null;
 		
@@ -17,7 +18,7 @@ public class principal {
 		ter.imprimirTerreno();	
 		do 
 		{
-			opcion=Integer.parseInt(JOptionPane.showInputDialog("--- MENU PRINCIPAL ---\n1. Crear un terreno.\n2. Lectura de un terreno.\n3. Escritura de un terreno.\n4. Generar acciones posibles.\n5. Obtener estado actual\n6. Salir")); 
+			opcion=Integer.parseInt(JOptionPane.showInputDialog("--- MENU PRINCIPAL ---\n1. Crear un terreno.\n2. Lectura de un terreno.\n3. Escritura de un terreno.\n4. Generar acciones posibles.\n5. Realizar una accion. \n6. Salir")); 
 			switch(opcion)
 			{
 				case 1:
@@ -37,13 +38,15 @@ public class principal {
 					ter.imprimirTerreno();
 				break;
 				case 3:
-				
+					
 				break;
 				case 4:
-				
+					ter.MovimientosValidos();
+					ter.mostrarMovimientosPosibles();
 				break;
 				case 5:
-				
+					ter.generarAccion();
+					ter.imprimirTerreno();	
 				break;
 			}
 		}

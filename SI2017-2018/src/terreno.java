@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Random;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
@@ -10,10 +11,11 @@ public class terreno {
 	int xt=0;
 	int yt=0;
 	int k=0;
+	//
 	int max=0;
 	int c=0;
 	int f=0;
-	
+	int [] MovimientosPosibles = new int[4];
 	public terreno(casilla cas[][]) 
 	{
 		this.cas=cas;
@@ -59,6 +61,113 @@ public class terreno {
     		System.out.println();
 		}
 	}
+	
+	 public void MovimientosValidos() {
+	     
+         
+		// Inicializamos array de flags de movimiento
+	    	for(int i = 0; i < 4; i++){
+	    		MovimientosPosibles[i] = 0;
+	    	}
+	    	
+	    	
+	    			
+	    			
+	    			if((xt==0||xt==(cas.length-1))||(yt==0||yt==(cas[1].length-1))){
+	    				if((xt==0)){
+	    					if(yt==0){
+	    						
+	    						MovimientosPosibles[1] = 1;
+	    						MovimientosPosibles[3] = 1;
+	    					}
+	    					else if(yt==(cas[1].length-1)){
+	    						MovimientosPosibles[0] = 1;
+	    						MovimientosPosibles[3] = 1;
+	    						
+	    					}else {
+	    						MovimientosPosibles[0] = 1;
+	    						MovimientosPosibles[1] = 1;
+	    						MovimientosPosibles[3] = 1;
+	    						
+	    					}
+	    				}
+	    				else if(xt==(cas.length-1)){
+	    					if(yt==0){
+	    						MovimientosPosibles[1] = 1;
+	    						MovimientosPosibles[2] = 1;
+	    						
+	    					}
+	    					else if(yt==(cas[1].length-1)){
+	    						MovimientosPosibles[0] = 1;
+	    						MovimientosPosibles[2] = 1;
+	    						
+	    					}else {
+	    						MovimientosPosibles[0] = 1;
+	    						MovimientosPosibles[1] = 1;
+	    						MovimientosPosibles[2] = 1;
+	    						
+	    					}
+	    				}
+	    				else{
+	    					if(yt==0){
+	    						MovimientosPosibles[1] = 1;
+	    						MovimientosPosibles[2] = 1;
+	    						MovimientosPosibles[3] = 1;
+	    						
+	    					}else if (yt==(cas[1].length-1)){
+	    						MovimientosPosibles[0] = 1;
+	    						MovimientosPosibles[2] = 1;
+	    						MovimientosPosibles[3] = 1;
+	    						
+	    					}
+	    				}
+	    			}else {
+	    				MovimientosPosibles[0] = 1;
+						MovimientosPosibles[1] = 1;
+						MovimientosPosibles[2] = 1;
+						MovimientosPosibles[3] = 1;
+	    				
+	    			}
+	    			
+	    	
+	    	
+	    }
+	 public void mostrarMovimientosPosibles(){
+         
+	        System.out.print("\nLos movimientos válidos son: \n\n");
+	         
+	        if(MovimientosPosibles[0] == 1) System.out.println("Izquierda");
+	        if(MovimientosPosibles[1] == 1) System.out.println("Derecha");
+	        if(MovimientosPosibles[2] == 1) System.out.println("Arriba");
+	        if(MovimientosPosibles[3] == 1) System.out.println("Abajo");
+	    }
+	public void generarAccion()
+	{	casilla aux;
+		MovimientosValidos();
+		int el=decidirAleatorio(MovimientosPosibles);
+		if(el==0) {
+			yt=yt-1;
+			System.out.println("Izquierda");
+		}else if(el==1) {
+			yt=yt+1;
+			System.out.println("Derecha");
+		}else if(el==2) {
+			xt=xt-1;
+			System.out.println("Arriba");
+		}else {
+			xt=xt+1;
+			System.out.println("Abajo");
+		}
+	}
+	private int decidirAleatorio(int[] movimientosPosibles) {
+    	Random rn=new Random();
+    	int sel=rn.nextInt(4);
+    	
+    	while(movimientosPosibles[sel]==0)//Si el movimiento no es posible debe buscarse otro.
+    		sel=rn.nextInt(4);
+		return sel;
+	}
+
 	public int getxt() {
 		return xt;
 	}
