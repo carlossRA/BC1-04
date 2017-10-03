@@ -11,6 +11,7 @@ public class terreno {
 	int xt=0;
 	int yt=0;
 	int k=0;
+	//
 	int max=0;
 	int c=0;
 	int f=0;

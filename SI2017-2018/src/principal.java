@@ -7,6 +7,7 @@ public class principal {
 		int opcion=0;
 		int filas=0;
 		int columnas=0;
+		//
 		casilla[][] cas=null;
 		terreno ter=null;
 		
