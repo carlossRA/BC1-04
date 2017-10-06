@@ -22,6 +22,10 @@ public class principal {
 		int opcion=0;
 		int filas=0;
 		int columnas=0;
+		int xt = 0;
+		int yt = 0;
+		int k = 0;
+		int max = 0;
 		//
 		casilla[][] cas=null;
 		terreno ter=null;
@@ -37,11 +41,18 @@ public class principal {
 			switch(opcion)
 			{
 				case 1:
+					xt = Integer.parseInt(JOptionPane.showInputDialog("Introduzca Xt"));
+					yt = Integer.parseInt(JOptionPane.showInputDialog("Introduzca Yt"));
+					k = Integer.parseInt(JOptionPane.showInputDialog("Introduzca K"));
+					max = Integer.parseInt(JOptionPane.showInputDialog("Introduzca MAX"));
+					while (max<k) {
+						max = Integer.parseInt(JOptionPane.showInputDialog("Introduzca un valor menor que "+ k));
+					}
 					filas=Integer.parseInt(JOptionPane.showInputDialog("Introduzca número de filas:")); 
-					columnas=opcion=Integer.parseInt(JOptionPane.showInputDialog("Introduzca número de columnas:"));
+					columnas=Integer.parseInt(JOptionPane.showInputDialog("Introduzca número de columnas:"));
 					cas=new casilla [filas][columnas];
-					ter=new terreno(cas);
-					ter.crearTerreno();
+					ter=new terreno(cas,xt,yt,k,max,filas,columnas);
+					ter.crearTerreno(max);
 					ter.imprimirTerreno();
 					break;
 				case 2:

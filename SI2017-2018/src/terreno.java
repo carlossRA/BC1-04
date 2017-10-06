@@ -14,9 +14,9 @@ import javax.swing.JOptionPane;
 public class terreno {
 	int filas,columnas;
 	casilla cas [][] ;
-	int xt=0;
-	int yt=0;
-	int k=0;
+	int xt;
+	int yt;
+	int k;
 	
 	/* -- Variables --
 	 * 
@@ -34,6 +34,18 @@ public class terreno {
 	public terreno(casilla cas[][]) 
 	{
 		this.cas=cas;
+		
+		
+	}
+	public terreno(casilla cas[][], int x, int y, int k, int max, int f, int c) {
+		this.cas=cas;
+		this.xt=x;
+		this.yt=y;
+		this.k=k;
+		this.max = max;
+		this.c=c;
+		this.f=f;
+		
 	}
 	
 	/*-- Metodo crearTerreno --
@@ -42,12 +54,15 @@ public class terreno {
 	 *  
 	 *  */
 	
-	public void crearTerreno() 
-	{
+	public void crearTerreno(int p) {
+		// TODO Auto-generated method stub
+		Random rn=new Random();
+    	int sel=0;
 		for(int i=0;i<cas.length;i++) 
     		for(int j=0;j<cas.length;j++)
     		{	
-    			cas[i][j]=new casilla(Integer.parseInt(JOptionPane.showInputDialog("Introduzca cantidad casilla "+i+" "+j)),i,j); 
+    			sel=rn.nextInt(p);
+    			cas[i][j]=new casilla(sel,i,j); 
     		}
 	}
 	
@@ -89,6 +104,7 @@ public class terreno {
 	 *  */
 	
 	public void imprimirTerreno() {
+		System.out.println("----------------");
 		System.out.println(xt+" "+yt+" "+k+" "+max+" "+c+" "+f);
 		for(int i=0;i<cas.length;i++) {
     		for(int j=0;j<cas.length;j++)
@@ -246,4 +262,6 @@ public class terreno {
 	public int f() {
 		return f;
 	}
+
+	
 }
