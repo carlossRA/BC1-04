@@ -23,7 +23,8 @@ public class principal {
 			{
 				case 1:
 					filas=Integer.parseInt(JOptionPane.showInputDialog("Introduzca número de filas:")); 
-					columnas=opcion=Integer.parseInt(JOptionPane.showInputDialog("Introduzca número de columnas:"));
+					columnas=Integer.parseInt(JOptionPane.showInputDialog("Introduzca número de columnas:"));
+					//max=Integer.parseInt(JOptionPane.showInputDialog("Introduzca número de columnas:"));	
 					cas=new casilla [filas][columnas];
 					ter=new terreno(cas);
 					ter.crearTerreno();
@@ -38,7 +39,7 @@ public class principal {
 					ter.imprimirTerreno();
 				break;
 				case 3:
-					
+					ter.EscribirFichero();
 				break;
 				case 4:
 					ter.MovimientosValidos();

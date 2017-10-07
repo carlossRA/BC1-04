@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,7 +13,6 @@ public class terreno {
 	int xt=0;
 	int yt=0;
 	int k=0;
-	//
 	int max=0;
 	int c=0;
 	int f=0;
@@ -167,7 +168,36 @@ public class terreno {
     		sel=rn.nextInt(4);
 		return sel;
 	}
+	public void EscribirFichero()
+	{
+		
+		FileWriter fichero = null;
+		PrintWriter pw = null;
+		        try
+		        {
+		            fichero = new FileWriter("terreno.txt");
+		            pw = new PrintWriter(fichero);
 
+		            for (int i=0;i<cas.length;i++) {
+		               for(int j=0;j<cas[i].length;j++) {
+		            	   pw.println(cas[i][j]+" ");
+		               }
+		               System.out.println();
+		            }
+		        } catch (Exception e) {
+		            e.printStackTrace();
+		        } finally {
+		           try {
+		           // Nuevamente aprovechamos el finally para 
+		           // asegurarnos que se cierra el fichero.
+		           if (null != fichero)
+		              fichero.close();
+		           } catch (Exception e2) {
+		              e2.printStackTrace();
+		           }
+		        }
+		    }
+		
 	public int getxt() {
 		return xt;
 	}
