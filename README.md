@@ -1,1 +1,0 @@
-# SistemasInteligentes-LAB
