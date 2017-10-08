@@ -194,17 +194,62 @@ public class terreno {
 	 *  */
 
 	public void mostrarMovimientosPosibles() {
-
+		int cantidad;
 		System.out.print("\nLos movimientos válidos son: \n\n");
-
+	
+		cantidad=cas[xt][yt].getCantidad()-k;
+		System.out.println(cantidad);
+		if(cantidad>0)
+		{
 		if (MovimientosPosibles[0] == 1)
-			System.out.println("Izquierda");
+		{
+			System.out.println("Izquierda ");
+			
+			for(int i=0;i<=cantidad;i++)
+			{
+				if((cas[xt][yt-1].getCantidad()+i)<=max) {
+					System.out.println("le añado "+i);
+					
+				}
+			}
+			
+		}
 		if (MovimientosPosibles[1] == 1)
+		{
 			System.out.println("Derecha");
+			for(int i=0;i<=cantidad;i++)
+			{
+				if((cas[xt][yt+1].getCantidad()+i)<=max) {
+					System.out.println("le añado "+i);
+					
+				}
+			}
+			
+		}
 		if (MovimientosPosibles[2] == 1)
+		{
 			System.out.println("Arriba");
-		if (MovimientosPosibles[3] == 1)
+			for(int i=0;i<=cantidad;i++)
+			{
+				if((cas[xt-1][yt].getCantidad()+i)<=max) {
+					System.out.println("le añado "+i);
+					
+				}
+			}
+			
+		}
+		if (MovimientosPosibles[3] == 1) {
 			System.out.println("Abajo");
+			for(int i=0;i<=cantidad;i++)
+			{
+				if((cas[xt+1][yt].getCantidad()+i)<=max) {
+					System.out.println("le añado "+i);
+					
+				}
+			}
+			
+		}
+		}
 	}
 
 	/*-- Metodo generarAcción --
@@ -338,5 +383,7 @@ public class terreno {
 		datos.close();
 		return tamFichTer;
 	}
+	
+	
 
 }
