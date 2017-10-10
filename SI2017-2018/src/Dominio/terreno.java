@@ -258,21 +258,42 @@ public class terreno {
 	 *  
 	 *  */
 
-	public void generarAccion() {
-		casilla aux;
+	public void generarAccion()
+	{	casilla aux;
 		MovimientosValidos();
-		int el = decidirAleatorio(MovimientosPosibles);
-		if (el == 0) {
-			yt = yt - 1;
+		int el=decidirAleatorio(MovimientosPosibles);
+		if(el==0) {
+			if (cas[xt][yt].getCantidad()>k) {
+				if(cas[xt][yt-1].getCantidad()<max)
+					cas[xt][yt-1]=new casilla(cas[xt][yt].getCantidad()-k+cas[xt][yt-1].getCantidad(),xt,yt-1);
+					cas[xt][yt]=new casilla(cas[xt][yt].getCantidad()-(cas[xt][yt].getCantidad()-k),xt,yt);
+			}
+			
+			yt=yt-1;
 			System.out.println("Izquierda");
-		} else if (el == 1) {
-			yt = yt + 1;
+		}else if(el==1) {
+			if (cas[xt][yt].getCantidad()>k) {
+				if(cas[xt][yt+1].getCantidad()<max)
+					cas[xt][yt+1]=new casilla(cas[xt][yt].getCantidad()-k+cas[xt][yt+1].getCantidad(),xt,yt+1);
+					cas[xt][yt]=new casilla(cas[xt][yt].getCantidad()-(cas[xt][yt].getCantidad()-k),xt,yt);
+			}
+			yt=yt+1;
 			System.out.println("Derecha");
-		} else if (el == 2) {
-			xt = xt - 1;
+		}else if(el==2) {
+			if (cas[xt-1][yt].getCantidad()>k) {
+				if(cas[xt-1][yt].getCantidad()<max)
+					cas[xt-1][yt]=new casilla(cas[xt][yt].getCantidad()-k+cas[xt-1][yt].getCantidad(),xt-1,yt);
+					cas[xt][yt]=new casilla(cas[xt][yt].getCantidad()-(cas[xt][yt].getCantidad()-k),xt,yt);
+			}
+			xt=xt-1;
 			System.out.println("Arriba");
-		} else {
-			xt = xt + 1;
+		}else {
+			if (cas[xt][yt].getCantidad()>k) {
+				if(cas[xt+1][yt].getCantidad()<max)
+					cas[xt+1][yt]=new casilla(cas[xt][yt].getCantidad()-k+cas[xt+1][yt].getCantidad(),xt+1,yt);
+					cas[xt][yt]=new casilla(cas[xt][yt].getCantidad()-(cas[xt][yt].getCantidad()-k),xt,yt);
+			}
+			xt=xt+1;
 			System.out.println("Abajo");
 		}
 	}
