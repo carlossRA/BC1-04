@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-<<<<<<< HEAD
-	<name>SistemasInteligentes-LAB</name>
-	<comment></comment>
-	<projects>
-	</projects>
-	<buildSpec>
-	</buildSpec>
-	<natures>
-=======
-	<name>BC1-04</name>
+	<name>src</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -22,6 +13,5 @@
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
->>>>>>> branch 'master' of https://github.com/carlossRA/SistemasInteligentes-LAB.git
 	</natures>
 </projectDescription>
