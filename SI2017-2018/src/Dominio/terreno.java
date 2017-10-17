@@ -481,14 +481,14 @@ public class terreno {
 	
 if(MovimientosPosibles[2]==1) 
 	for(int i=0;i<pila.size();i++)
-	pila2.push((xt+1)+" "+yt+" "+pila.elementAt(i));
+	pila2.push((xt-1)+" "+yt+" "+pila.elementAt(i));
 
 	
 
 
 if(MovimientosPosibles[3]==1) 
 	for(int i=0;i<pila.size();i++)
-		pila2.push((xt-1)+" "+yt+" "+pila.elementAt(i));
+		pila2.push((xt+1)+" "+yt+" "+pila.elementAt(i));
 	
 	
 
