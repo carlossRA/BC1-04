@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Stack;
 
 import javax.swing.JOptionPane;
 
@@ -21,7 +22,7 @@ public class terreno {
 	int xt = 0;
 	int yt = 0;
 	int k = 0;
-
+	Stack <String >pila=new Stack();
 	/*
 	 * -- Variables --
 	 * 
@@ -258,8 +259,8 @@ public class terreno {
 	 *  
 	 *  */
 
-	public void generarAccion()
-	{	casilla aux;
+	public void generarAccion(Stack pila)
+	{	/*casilla aux;
 		MovimientosValidos();
 		int el=decidirAleatorio(MovimientosPosibles);
 		if(el==0) {
@@ -295,7 +296,12 @@ public class terreno {
 			}
 			xt=xt+1;
 			System.out.println("Abajo");
-		}
+		}*/
+		
+		Random rn =new Random();
+		
+		System.out.println(pila.elementAt(rn.nextInt(pila.size()-1)));
+		
 	}
 
 	/*-- Metodo decidirAleatorio --
@@ -405,6 +411,86 @@ public class terreno {
 		return tamFichTer;
 	}
 	
+	public Stack DistribuirCantidades()
+	{   String cad = "";
+		Stack <String>pila=new Stack();
+		Stack <String> pila2=new Stack();
+		int izq=0,der=0,arr=0,abj=0,cantADist=0;
+		cantADist=cas[xt][yt].getCantidad()-k;
+		System.out.println("cantidad a distribuir: "+cantADist+"\n");
+		if(cantADist>0) 
+		{
+	
+			for(izq=0; izq<=cantADist*MovimientosPosibles[0];izq++)
+			{
+				for(der=0; der<=cantADist*MovimientosPosibles[1];der++)
+				{
+					for(arr=0; arr<=cantADist*MovimientosPosibles[2];arr++)
+					{
+						for(abj=0; abj<=cantADist*MovimientosPosibles[3];abj++)
+						{
+							
+							if((izq+der+arr+abj)==cantADist) 
+								if((((izq+cas[xt][(yt-1)*MovimientosPosibles[0]].getCantidad())*MovimientosPosibles[0])<=max)&&
+								(((der+cas[xt][(yt+1)*MovimientosPosibles[1]].getCantidad())*MovimientosPosibles[1])<=max)&&
+								(((arr+cas[(xt-1)*MovimientosPosibles[2]][yt].getCantidad())*MovimientosPosibles[2])<=max)&&
+								(((abj+cas[(xt+1)*MovimientosPosibles[3]][yt].getCantidad())*MovimientosPosibles[3])<=max)){
+							
+									if(MovimientosPosibles[0]==1) {
+										cad=cad+"("+izq+" "+xt+" "+(yt-1)+"),";
+										
+									}
+										
+									
+									if(MovimientosPosibles[1]==1) {
+										cad=cad+"("+der+" "+xt+" "+(yt+1)+"),";
+										
+								}
+							if(MovimientosPosibles[2]==1) {
+								cad=cad+"("+arr+" "+(xt-1)+" "+(yt)+"),";
+							
+							}
+							if(MovimientosPosibles[3]==1) {
+								cad=cad+"("+abj+" "+(xt+1)+" "+yt+"),";
+								
+						}
+					pila.push(cad);
+					cad="";
+				
+		
+}
+}
+}
+				}
+		}
+		}
+
+		if(MovimientosPosibles[0]==1)
+		
+			for(int i=0;i<pila.size();i++)
+				pila2.push(xt+" "+(yt-1)+" "+pila.elementAt(i));
+			
+		
+			
+		
+		if(MovimientosPosibles[1]==1) 
+			for(int i=0;i<pila.size();i++)
+				pila2.push(xt+" "+(yt+1)+" "+pila.elementAt(i));
+					
+			
+	
+if(MovimientosPosibles[2]==1) 
+	for(int i=0;i<pila.size();i++)
+	pila2.push((xt+1)+" "+yt+" "+pila.elementAt(i));
+
 	
 
+
+if(MovimientosPosibles[3]==1) 
+	for(int i=0;i<pila.size();i++)
+		pila2.push((xt-1)+" "+yt+" "+pila.elementAt(i));
+	
+	
+
+		return pila2;	}
 }
