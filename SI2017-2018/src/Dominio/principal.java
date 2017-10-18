@@ -1,6 +1,7 @@
 package Dominio;
 
 import java.io.FileNotFoundException;
+import java.util.Stack;
 
 import javax.swing.JOptionPane;
 
@@ -23,7 +24,7 @@ public class principal {
 	 */
 
 	public static void main(String[] args) throws FileNotFoundException {
-
+		Stack pila = null;
 		int opcion = 0;
 		int filas = 0;
 		int columnas = 0;
@@ -80,12 +81,20 @@ public class principal {
 				ter.imprimirTerreno();
 				break;
 			case 4:
-				ter.MovimientosValidos();
-				ter.mostrarMovimientosPosibles();
+				ter.MovimientosValidos();// aqui saca direcciones
+				System.out.println("---------------");
+				pila=ter.DistribuirCantidades();
+				while(!pila.isEmpty())
+				{
+					System.out.println(pila.pop());
+				}
+				/*ter.mostrarMovimientosPosibles();//aqui distribuye la cantidad*/
 				break;
 			case 5:
-				ter.generarAccion();
-				ter.imprimirTerreno();
+				ter.MovimientosValidos();
+				pila=ter.DistribuirCantidades();
+				ter.generarAccion(pila);
+			
 				break;
 			}
 		}
