@@ -22,6 +22,7 @@ public class terreno {
 	int xt = 0;
 	int yt = 0;
 	int k = 0;
+	int V=0;
 	Stack <String >pila=new Stack();
 	/*
 	 * -- Variables --
@@ -67,15 +68,43 @@ public class terreno {
 
 	public void crearTerreno(int p) {
 		// TODO Auto-generated method stub
-
+		V = c*f*k;
 		Random rn = new Random();
 		int sel = 0;
 		for (int i = 0; i < cas.length; i++)
 			for (int j = 0; j < cas[i].length; j++) {
+				if (V>0) {
 				sel = rn.nextInt(p);
 				cas[i][j] = new casilla(sel, i, j);
+				V = V - sel;
+				}
+				else cas[i][j] = new casilla(0, i, j);
+			}
+		System.out.println("V vale "+V);
+		do {
+			completarTerreno(p,V);
+		}
+		while(V>0);
+		System.out.println("V vale ahora "+V);
+	}
+	
+	public void completarTerreno(int p, int v) {
+		V = v;
+		Random rn = new Random();
+		int sel = 0;
+		for (int i = 0; i < cas.length; i++)
+			for (int j = 0; j < cas[i].length; j++) {
+				if (V>0) {
+					do {
+						sel = rn.nextInt(p);
+					}
+					while((cas[i][j].getCantidad()+sel)>=p || V-sel<0);
+				cas[i][j] = new casilla(cas[i][j].getCantidad()+sel, i, j);
+				V = V - sel;
+				}
 			}
 	}
+	
 
 	/*-- Metodo leerTerreno --
 	 * 
