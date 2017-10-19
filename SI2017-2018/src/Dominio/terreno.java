@@ -439,7 +439,6 @@ public class terreno {
 		datos.close();
 		return tamFichTer;
 	}
-	
 	public Stack DistribuirCantidades()
 	{   String cad = "";
 		Stack <String>pila=new Stack();
@@ -447,52 +446,153 @@ public class terreno {
 		int izq=0,der=0,arr=0,abj=0,cantADist=0;
 		cantADist=cas[xt][yt].getCantidad()-k;
 		System.out.println("cantidad a distribuir: "+cantADist+"\n");
+		int cantidadIzq = 0,cantidadDer = 0,cantidadArr = 0,cantidadAbj;
 		if(cantADist>0) 
 		{
-	
-			for(izq=0; izq<=cantADist*MovimientosPosibles[0];izq++)
-			{
-				for(der=0; der<=cantADist*MovimientosPosibles[1];der++)
-				{
-					for(arr=0; arr<=cantADist*MovimientosPosibles[2];arr++)
-					{
-						for(abj=0; abj<=cantADist*MovimientosPosibles[3];abj++)
-						{
-							
-							if((izq+der+arr+abj)==cantADist) 
-								if((((izq+cas[xt][(yt-1)*MovimientosPosibles[0]].getCantidad())*MovimientosPosibles[0])<=max)&&
-								(((der+cas[xt][(yt+1)*MovimientosPosibles[1]].getCantidad())*MovimientosPosibles[1])<=max)&&
-								(((arr+cas[(xt-1)*MovimientosPosibles[2]][yt].getCantidad())*MovimientosPosibles[2])<=max)&&
-								(((abj+cas[(xt+1)*MovimientosPosibles[3]][yt].getCantidad())*MovimientosPosibles[3])<=max)){
-							
-									if(MovimientosPosibles[0]==1) {
-										cad=cad+"("+izq+" "+xt+" "+(yt-1)+"),";
-										
-									}
-										
-									
-									if(MovimientosPosibles[1]==1) {
-										cad=cad+"("+der+" "+xt+" "+(yt+1)+"),";
-										
+
+			if ((xt == 0 || xt == (cas.length - 1)) || (yt == 0 || yt == (cas[1].length - 1))) {
+				if ((xt == 0)) {
+					if (yt == 0) {//movimientos posibles para derecha ,abajo
+						for(der=0;der<=cantADist;der++)
+							for(abj=0;abj<=cas.length;abj++) {
+								if((der+abj)==cantADist)
+								if(((der+cas[xt][yt+1].getCantidad())<=max)&&
+								((abj+cas[xt+1][yt].getCantidad())<=max))
+								{
+									pila.push("("+der+" "+xt+" "+(yt+1)+"),"+
+									"("+abj+" "+(xt+1)+" "+(yt)+"),");
 								}
-							if(MovimientosPosibles[2]==1) {
-								cad=cad+"("+arr+" "+(xt-1)+" "+(yt)+"),";
-							
 							}
-							if(MovimientosPosibles[3]==1) {
-								cad=cad+"("+abj+" "+(xt+1)+" "+yt+"),";
 								
-						}
-					pila.push(cad);
-					cad="";
-				
-		
-}
-}
-}
+						
+					} else if (yt == (cas[1].length - 1)) {//movimientos posibles para izquierda ,abajo
+						for(izq=0;izq<=cantADist;izq++)
+							for(abj=0;abj<=cantADist;abj++)
+							{	if((izq+abj)==cantADist)
+								if(((izq+cas[xt][yt-1].getCantidad())<=max)&&
+										((abj+cas[xt+1][yt].getCantidad())<=max))
+										{
+									pila.push("("+izq+" "+xt+" "+(yt-1)+"),"+
+											"("+abj+" "+(xt+1)+" "+(yt)+"),");
+										}
+							}
+
+					} else {//movimientos posibles para izquierda ,derecha ,abajo
+						for(izq=0;izq<=cantADist;izq++)
+							for(der=0;der<=cantADist;der++)
+							for(abj=0;abj<=cantADist;abj++)
+							{	if((der+izq+abj)==cantADist)
+								if(((der+cas[xt][yt+1].getCantidad())<=max)&&
+										((abj+cas[xt+1][yt].getCantidad())<=max)&&
+										((izq+cas[xt][yt-1].getCantidad())<=max))
+										{
+											pila.push("("+izq+" "+xt+" "+(yt-1)+"),"+
+											"("+abj+" "+(xt+1)+" "+(yt)+"),"+
+											"("+der+" "+xt+" "+(yt+1)+"),");
+										}
+							}	
+
+					}
+				} else if (xt == (cas.length - 1)) {
+					if (yt == 0) {//movimientos posibles derecha, arriba
+						for(der=0;der<=cantADist;der++)
+							for(arr=0;arr<=cantADist;arr++)
+							{	if((der+arr)==cantADist)
+								if(((der+cas[xt][yt+1].getCantidad())<=max)&&
+										((arr+cas[xt-1][yt].getCantidad())<=max))
+										{
+											pila.push("("+der+" "+xt+" "+(yt+1)+"),"+
+											"("+arr+" "+(xt-1)+" "+(yt)+"),");
+										}
+							}
+
+					} else if (yt == (cas[1].length - 1)) {//movimientos posibles para izquierda ,arriba
+						for(izq=0;izq<=cantADist;izq++)
+							for(arr=0;arr<=cantADist;arr++)
+							{	if((izq+arr)==cantADist)
+								if(((izq+cas[xt][yt-1].getCantidad())<=max)&&
+										((arr+cas[xt-1][yt].getCantidad())<=max))
+										{
+											pila.push("("+izq+" "+xt+" "+(yt-1)+"),"+
+											"("+arr+" "+(xt-1)+" "+(yt)+"),");
+										}
+							}
+
+					} else {//movimientos posibles para izquierda,derecha,arriba
+						for(izq=0;izq<=cantADist;izq++)
+							for(der=0;der<=cantADist;der++)
+							for(arr=0;arr<=cantADist;arr++)
+							{	if((izq+der+arr)==cantADist)
+								if(((der+cas[xt][yt+1].getCantidad())<=max)&&
+										((arr+cas[xt-1][yt].getCantidad())<=max)&&
+										((izq+cas[xt][yt-1].getCantidad())<=max))
+										{
+									pila.push("("+izq+" "+xt+" "+(yt-1)+"),"+
+											"("+der+" "+(xt)+" "+(yt+1)+"),"
+											+"("+arr+" "+(xt-1)+" "+(yt)+"),");
+										}
+							}	
+
+
+					}
+				} else {
+					if (yt == 0) {//movimientos posibles para derecha ,arriba,abajo
+						for(der=0;der<=cantADist;der++)
+							for(arr=0;arr<=cantADist;arr++)
+							for(abj=0;abj<=cantADist;abj++)
+							{	if((der+arr+abj)==cantADist)
+								if(((der+cas[xt][yt+1].getCantidad())<=max)&&
+										((abj+cas[xt+1][yt].getCantidad())<=max)&&
+										((arr+cas[xt-1][yt].getCantidad())<=max))
+										{
+											pila.push("("+abj+" "+(xt+1)+" "+(yt)+"),"+
+											"("+der+" "+(xt)+" "+(yt+1)+"),"
+											+"("+arr+" "+(xt-1)+" "+(yt)+"),");
+										}
+							}	
+
+
+					} else if (yt == (cas[1].length - 1)) {//movimientos posibles para izquierda,arriba,abajo
+						for(izq=0;izq<=cantADist;izq++)
+							for(arr=0;arr<=cantADist;arr++)
+							for(abj=0;abj<=cantADist;abj++)
+							{	if((izq+arr+abj)==cantADist)
+								if(((arr+cas[xt-1][yt].getCantidad())<=max)&&
+										((abj+cas[xt+1][yt].getCantidad())<=max)&&
+										((izq+cas[xt][yt-1].getCantidad())<=max))
+										{
+											pila.push("("+abj+" "+(xt+1)+" "+(yt)+"),"+
+											"("+izq+" "+(xt)+" "+(yt-1)+"),"
+											+"("+arr+" "+(xt-1)+" "+(yt)+"),");
+										}
+							}	
+
+					}
 				}
-		}
-		}
+			} else {//movimientos posibles para izquierda,derecha,arriba y abajo
+				for(izq=0;izq<=cantADist;izq++)
+					for(der=0;der<=cantADist;der++)
+					for(arr=0;arr<=cantADist;arr++)
+						for(abj=0;abj<=cantADist;abj++) {
+							if((izq+der+arr+abj)==cantADist)
+							if(((der+cas[xt][yt+1].getCantidad())<=max)&&
+									((abj+cas[xt+1][yt].getCantidad())<=max)&&
+									((izq+cas[xt][yt-1].getCantidad())<=max)&&
+									((arr+cas[xt-1][yt].getCantidad())<=max))
+									{
+								pila.push("("+abj+" "+(xt+1)+" "+(yt)+"),"+
+										"("+izq+" "+(xt)+" "+(yt-1)+"),"
+										+"("+arr+" "+(xt-1)+" "+(yt)+"),"
+										+"("+der+" "+(xt)+" "+(yt+1)+"),");
+									}
+						}
+						
+					
+
+			}
+
+	}
+		
 
 		if(MovimientosPosibles[0]==1)
 		
@@ -519,7 +619,7 @@ if(MovimientosPosibles[3]==1)
 	for(int i=0;i<pila.size();i++)
 		pila2.push((xt+1)+" "+yt+" "+pila.elementAt(i));
 	
+		return pila2;
+	}
 	
-
-		return pila2;	}
 }
