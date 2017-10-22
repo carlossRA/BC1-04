@@ -230,6 +230,8 @@ public class terreno {
 	public void generarAccion(Stack pila)
 	{	
 		Random rn =new Random();
+		if(pila.size()>0) 
+		{
 		String elegido=(String) pila.elementAt(rn.nextInt(pila.size()-1));
 		System.out.println("\nMovimiento elegido:"+elegido);
 		
@@ -242,15 +244,18 @@ public class terreno {
 		int cantAñadir=0;
 		for(int i=0;i<4;i++)
 			if(MovimientosPosibles[i]==1)cont++;
-		for(int i=0;i<cont;i++)
-		{	
-			cantAñadir=Integer.parseInt(elegido.substring(5+incr,6+incr));
-			fila=Integer.parseInt(elegido.substring(7+incr,8+incr));
-			columna=Integer.parseInt(elegido.substring(9+incr,10+incr));
-			cas[fila][columna]=
+			for(int i=0;i<cont;i++)
+			{	
+				cantAñadir=Integer.parseInt(elegido.substring(5+incr,6+incr));
+				fila=Integer.parseInt(elegido.substring(7+incr,8+incr));
+				columna=Integer.parseInt(elegido.substring(9+incr,10+incr));
+				cas[fila][columna]=
 					new casilla(cantAñadir+cas[fila][columna].getCantidad(),fila,columna);
-			incr=incr+8;
+				incr=incr+8;
 			
+			} 
+		}else {
+			System.out.println("No hay movimientos posibles");
 		}
 	}
 
