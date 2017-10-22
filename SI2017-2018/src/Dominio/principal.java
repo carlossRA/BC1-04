@@ -84,6 +84,7 @@ public class principal {
 				ter.MovimientosValidos();// aqui saca direcciones
 				System.out.println("---------------");
 				pila=ter.DistribuirCantidades();
+				System.out.println("cantidad a distribuir: "+(ter.max()-ter.k())+"\n");
 				while(!pila.isEmpty())
 				{
 					System.out.println(pila.pop());
@@ -94,7 +95,8 @@ public class principal {
 				ter.MovimientosValidos();
 				pila=ter.DistribuirCantidades();
 				ter.generarAccion(pila);
-			
+				System.out.println("\nTerreno actual");
+				ter.imprimirTerreno();
 				break;
 			}
 		}

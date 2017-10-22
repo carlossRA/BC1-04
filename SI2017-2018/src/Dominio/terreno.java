@@ -217,70 +217,9 @@ public class terreno {
 
 	}
 
-	/*-- Metodo mostrarMovimientosPosibles --
-	 * 
-	 * mostramos los movimientos que son posibles en ese estado.
-	 *  
-	 *  */
-
-	public void mostrarMovimientosPosibles() {
-		int cantidad;
-		System.out.print("\nLos movimientos válidos son: \n\n");
 	
-		cantidad=cas[xt][yt].getCantidad()-k;
-		System.out.println(cantidad);
-		if(cantidad>0)
-		{
-		if (MovimientosPosibles[0] == 1)
-		{
-			System.out.println("Izquierda ");
-			
-			for(int i=0;i<=cantidad;i++)
-			{
-				if((cas[xt][yt-1].getCantidad()+i)<=max) {
-					System.out.println("le añado "+i);
-					
-				}
-			}
-			
-		}
-		if (MovimientosPosibles[1] == 1)
-		{
-			System.out.println("Derecha");
-			for(int i=0;i<=cantidad;i++)
-			{
-				if((cas[xt][yt+1].getCantidad()+i)<=max) {
-					System.out.println("le añado "+i);
-					
-				}
-			}
-			
-		}
-		if (MovimientosPosibles[2] == 1)
-		{
-			System.out.println("Arriba");
-			for(int i=0;i<=cantidad;i++)
-			{
-				if((cas[xt-1][yt].getCantidad()+i)<=max) {
-					System.out.println("le añado "+i);
-					
-				}
-			}
-			
-		}
-		if (MovimientosPosibles[3] == 1) {
-			System.out.println("Abajo");
-			for(int i=0;i<=cantidad;i++)
-			{
-				if((cas[xt+1][yt].getCantidad()+i)<=max) {
-					System.out.println("le añado "+i);
-					
-				}
-			}
-			
-		}
-		}
-	}
+
+
 
 	/*-- Metodo generarAcción --
 	 * 
@@ -289,48 +228,30 @@ public class terreno {
 	 *  */
 
 	public void generarAccion(Stack pila)
-	{	/*casilla aux;
-		MovimientosValidos();
-		int el=decidirAleatorio(MovimientosPosibles);
-		if(el==0) {
-			if (cas[xt][yt].getCantidad()>k) {
-				if(cas[xt][yt-1].getCantidad()<max)
-					cas[xt][yt-1]=new casilla(cas[xt][yt].getCantidad()-k+cas[xt][yt-1].getCantidad(),xt,yt-1);
-					cas[xt][yt]=new casilla(cas[xt][yt].getCantidad()-(cas[xt][yt].getCantidad()-k),xt,yt);
-			}
-			
-			yt=yt-1;
-			System.out.println("Izquierda");
-		}else if(el==1) {
-			if (cas[xt][yt].getCantidad()>k) {
-				if(cas[xt][yt+1].getCantidad()<max)
-					cas[xt][yt+1]=new casilla(cas[xt][yt].getCantidad()-k+cas[xt][yt+1].getCantidad(),xt,yt+1);
-					cas[xt][yt]=new casilla(cas[xt][yt].getCantidad()-(cas[xt][yt].getCantidad()-k),xt,yt);
-			}
-			yt=yt+1;
-			System.out.println("Derecha");
-		}else if(el==2) {
-			if (cas[xt-1][yt].getCantidad()>k) {
-				if(cas[xt-1][yt].getCantidad()<max)
-					cas[xt-1][yt]=new casilla(cas[xt][yt].getCantidad()-k+cas[xt-1][yt].getCantidad(),xt-1,yt);
-					cas[xt][yt]=new casilla(cas[xt][yt].getCantidad()-(cas[xt][yt].getCantidad()-k),xt,yt);
-			}
-			xt=xt-1;
-			System.out.println("Arriba");
-		}else {
-			if (cas[xt][yt].getCantidad()>k) {
-				if(cas[xt+1][yt].getCantidad()<max)
-					cas[xt+1][yt]=new casilla(cas[xt][yt].getCantidad()-k+cas[xt+1][yt].getCantidad(),xt+1,yt);
-					cas[xt][yt]=new casilla(cas[xt][yt].getCantidad()-(cas[xt][yt].getCantidad()-k),xt,yt);
-			}
-			xt=xt+1;
-			System.out.println("Abajo");
-		}*/
-		
+	{	
 		Random rn =new Random();
+		String elegido=(String) pila.elementAt(rn.nextInt(pila.size()-1));
+		System.out.println("\nMovimiento elegido:"+elegido);
 		
-		System.out.println(pila.elementAt(rn.nextInt(pila.size()-1)));
-		
+		xt=Integer.parseInt(elegido.substring(0 , 1));
+		yt=Integer.parseInt(elegido.substring(2 , 3));
+		int cont=0;
+		int fila=0;
+		int columna=0;
+		int incr=0;
+		int cantAñadir=0;
+		for(int i=0;i<4;i++)
+			if(MovimientosPosibles[i]==1)cont++;
+		for(int i=0;i<cont;i++)
+		{	
+			cantAñadir=Integer.parseInt(elegido.substring(5+incr,6+incr));
+			fila=Integer.parseInt(elegido.substring(7+incr,8+incr));
+			columna=Integer.parseInt(elegido.substring(9+incr,10+incr));
+			cas[fila][columna]=
+					new casilla(cantAñadir+cas[fila][columna].getCantidad(),fila,columna);
+			incr=incr+8;
+			
+		}
 	}
 
 	/*-- Metodo decidirAleatorio --
@@ -445,7 +366,7 @@ public class terreno {
 		Stack <String> pila2=new Stack();
 		int izq=0,der=0,arr=0,abj=0,cantADist=0;
 		cantADist=cas[xt][yt].getCantidad()-k;
-		System.out.println("cantidad a distribuir: "+cantADist+"\n");
+		
 		int cantidadIzq = 0,cantidadDer = 0,cantidadArr = 0,cantidadAbj;
 		if(cantADist>0) 
 		{
