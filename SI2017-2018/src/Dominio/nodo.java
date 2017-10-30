@@ -1,5 +1,101 @@
 package Dominio;
 
-public class nodo {
+import java.io.IOException;
+import java.util.Random;
+
+private Nodo nodoPadre;
+private Estado estado;  
+private int costo;
+private int profundidad;
+private float valor;
+private String accion;
+
+// Constructor para el caso del nodo raiz
+public nodo(Estado estado, String accion) {
+		this.nodoPadre = null;
+		this.estado = estado;
+		this.costo = 0;
+		this.profundidad = 0;
+		this.valor = 0;
+		this.accion = accion;
+}
+
+// Constructor para el caso del resto de nodos
+public nodo(Nodo nodoPadre, String accion, int costo) throws IOException {
+		
+		this.nodoPadre = nodoPadre;
+		this.costo = costo;
+		this.profundidad = nodoPadre.getProfundidad() + 1;
+	
+		//Por el momento valor es un aleatorio entre 0 y 1000
+		
+		Random rn = new Random();
+		this.valor = rn.nextInt(1000);
+		this.accion = accion;
+		Puzzle padre=(nodoPadre.getEstado().getPuzzle());
+		// Definimos el estado como el del nodo padre mas el movimiento
+		//Para evitar cambiar el estado del nodo padre creamos un nuevo puzzle que no apunte al puzzle del estado padre
+		Puzzle puzzletemp=new Puzzle(padre.getPuzzleMatriz(),padre.getImagenNegroRedim());
+		
+	
+	
+		switch(accion) {
+		case "izquierda":
+			puzzletemp.Movimiento(0);
+			this.estado = new Estado(puzzletemp);
+			break;
+		case "derecha":
+			puzzletemp.Movimiento(1);
+			this.estado = new Estado(puzzletemp);
+			break;
+		case "arriba":
+			puzzletemp.Movimiento(2);
+			this.estado = new Estado(puzzletemp);
+			break;
+		case "abajo":
+			puzzletemp.Movimiento(3);
+			this.estado = new Estado(puzzletemp);
+			break;
+		
+	}
+}
+
+public Nodo getNodoPadre() {
+	return nodoPadre;
+}
+
+public Estado getEstado() {
+	return estado;
+}
+
+public int getCosto() {
+	return costo;
+}
+
+public String getAccion() {
+	return accion;
+}
+
+public int getProfundidad() {
+	return profundidad;
+}
+
+public double getValor() {
+	return valor;
+}
+
+public int compareTo(Nodo otro) {
+	int res;
+	if(this.valor < otro.getValor()){
+		res = -1;
+	} else {
+		res = 1;
+	}
+	return res;
+	
+}
+
+
+
 
 }
