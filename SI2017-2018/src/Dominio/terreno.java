@@ -233,15 +233,15 @@ public class terreno {
 		if(pila.size()>0) 
 		{
 		String elegido=(String) pila.elementAt(rn.nextInt(pila.size()-1));
-		System.out.println("\nMovimiento elegido:"+elegido);
+		System.out.println("\nMovimiento elegido:"+elegido+"cantidad a distribuir: "+(cas[xt][yt].getCantidad()-k));
 		
-		xt=Integer.parseInt(elegido.substring(0 , 1));
-		yt=Integer.parseInt(elegido.substring(2 , 3));
+		
 		int cont=0;
 		int fila=0;
 		int columna=0;
 		int incr=0;
 		int cantAñadir=0;
+		
 		for(int i=0;i<4;i++)
 			if(MovimientosPosibles[i]==1)cont++;
 			for(int i=0;i<cont;i++)
@@ -252,8 +252,10 @@ public class terreno {
 				cas[fila][columna]=
 					new casilla(cantAñadir+cas[fila][columna].getCantidad(),fila,columna);
 				incr=incr+8;
-			
-			} 
+				cas[xt][yt].setCantidad(cas[xt][yt].getCantidad()-cantAñadir);
+			}
+			xt=Integer.parseInt(elegido.substring(0 , 1));
+			yt=Integer.parseInt(elegido.substring(2 , 3));
 		}else {
 			System.out.println("No hay movimientos posibles");
 		}

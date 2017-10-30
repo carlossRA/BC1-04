@@ -94,6 +94,13 @@ public class principal {
 			case 5:
 				ter.MovimientosValidos();
 				pila=ter.DistribuirCantidades();
+				
+				int cont=0;
+				while(cont <pila.size())
+				{	
+					System.out.println(pila.elementAt(cont));
+					cont++; 
+				}
 				ter.generarAccion(pila);
 				System.out.println("\nTerreno actual");
 				ter.imprimirTerreno();

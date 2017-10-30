@@ -1,4 +1,4 @@
-package Dominio;
+/*package Dominio;
 
 import java.io.IOException;
 import java.util.Random;
@@ -99,3 +99,4 @@ public int compareTo(Nodo otro) {
 
 
 }
+*/
