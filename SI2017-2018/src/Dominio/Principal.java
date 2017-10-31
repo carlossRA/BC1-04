@@ -49,7 +49,7 @@ public class Principal {
 
 		do {
 			opcion = Integer.parseInt(JOptionPane.showInputDialog(
-					"--- MENU PRINCIPAL ---\n1. Crear un terreno.\n2. Lectura de un terreno.\n3. Escritura de un terreno.\n4. Generar acciones posibles.\n5. Realizar una accion. \n6 frontera  cola \n7 frontera array.\n8 Salir"));
+					"--- MENU PRINCIPAL ---\n1. Crear un terreno.\n2. Lectura de un terreno.\n3. Escritura de un terreno.\n4. Generar acciones posibles.\n5. Realizar una accion. \n6 Frontera cola \n7 Frontera array.\n8 Salir"));
 			switch (opcion) {
 			case 1:
 				xt = Integer.parseInt(JOptionPane.showInputDialog("Introduzca Xt"));
@@ -68,6 +68,7 @@ public class Principal {
 				cas = new Casilla[filas][columnas];
 				ter = new Terreno(cas, xt, yt, k, max, filas, columnas);
 				ter.crearTerreno(max);
+				System.out.println("\nNuevo terreno");
 				ter.imprimirTerreno();
 				break;
 			case 2:
@@ -88,7 +89,7 @@ public class Principal {
 				ter.MovimientosValidos();// aqui saca direcciones
 				System.out.println("---------------");
 				pila = ter.DistribuirCantidades();
-				System.out.println("cantidad a distribuir: " + (ter.max() - ter.k()) + "\n");
+				System.out.println("\ncantidad a distribuir: " + (ter.max() - ter.k()) + "\n");
 				while (!pila.isEmpty()) {
 					System.out.println(pila.pop());
 				}

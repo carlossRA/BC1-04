@@ -80,11 +80,11 @@ public class Terreno {
 				} else
 					cas[i][j] = new Casilla(0, i, j);
 			}
-		System.out.println("V vale " + V);
+		
 		do {
 			completarTerreno(p, V);
 		} while (V > 0);
-		System.out.println("V vale ahora " + V);
+		
 	}
 
 	public void completarTerreno(int p, int v) {
