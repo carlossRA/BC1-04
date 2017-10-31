@@ -213,8 +213,7 @@ public class Principal {
 
 						Nodo nodo = new Nodo(nabArray, sucesorInsertar.getAccion(), sucesorInsertar.getCosto(),
 								sucesorInsertar.getEstado());
-						// nodo.getEstado().getPuzzle().EscribirArray();
-						// System.out.println(" "+nodo.getAccion());
+						
 						valorNodoInsertar = nodo.getValor();
 
 						// Insertamos nodos
