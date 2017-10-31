@@ -227,13 +227,10 @@ public class Terreno {
 	 *  
 	 *  */
 
-	public void generarAccion(Stack pila)
+	public void generarAccion(String elegido)
 	{	
-		Random rn =new Random();
-		if(pila.size()>0) 
-		{
-		String elegido=(String) pila.elementAt(rn.nextInt(pila.size()-1));
-		System.out.println("\nMovimiento elegido:"+elegido+"cantidad a distribuir: "+(cas[xt][yt].getCantidad()-k));
+		
+		
 		
 		
 		int cont=0;
@@ -256,9 +253,7 @@ public class Terreno {
 			}
 			xt=Integer.parseInt(elegido.substring(0 , 1));
 			yt=Integer.parseInt(elegido.substring(2 , 3));
-		}else {
-			System.out.println("No hay movimientos posibles");
-		}
+		
 	}
 
 	/*-- Metodo decidirAleatorio --
@@ -367,8 +362,10 @@ public class Terreno {
 		datos.close();
 		return tamFichTer;
 	}
-	public Stack DistribuirCantidades()
-	{   String cad = "";
+	public Stack <String> DistribuirCantidades()
+	{
+		
+		String cad = "";
 		Stack <String>pila=new Stack();
 		Stack <String> pila2=new Stack();
 		int izq=0,der=0,arr=0,abj=0,cantADist=0;
@@ -546,8 +543,52 @@ if(MovimientosPosibles[2]==1)
 if(MovimientosPosibles[3]==1) 
 	for(int i=0;i<pila.size();i++)
 		pila2.push((xt+1)+" "+yt+" "+pila.elementAt(i));
-	
+	     
+      
 		return pila2;
+	}
+	
+	public int getK()
+	{
+		return k;
+	}
+	public int getColumnas()
+	{
+		return c;
+	}
+	public int getFilas()
+	{
+		return f;
+	}
+	public void setFilas(int filas)
+	{
+		this.filas=filas;
+	}
+
+	public void setColumnas(int columnas) {
+		this.columnas=columnas;
+		
+	}
+
+	public void setXT(int xt) {
+		this.xt=xt;
+		
+	}
+	public void setYT(int yt) {
+		this.yt=yt;
+		
+	}
+	public void setMax(int max)
+	{
+		this.max=max;
+	}
+	public void setK(int k)
+	{
+		this.k=k;
+	}
+	public int getMax()
+	{
+		return this.max;
 	}
 	
 }

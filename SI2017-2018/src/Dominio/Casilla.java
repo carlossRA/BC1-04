@@ -17,6 +17,10 @@ public class Casilla {
 		this.columna = columna;
 	}
 
+	public Casilla() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/*
 	 * -- Metodo getCantidad() --
 	 * 

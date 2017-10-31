@@ -1,6 +1,9 @@
 package Dominio;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.PriorityQueue;
+import java.util.Random;
 import java.util.Stack;
 
 import javax.swing.JOptionPane;
@@ -23,7 +26,7 @@ public class Principal {
 	 * valor de nuestro terreno cuando esté creado.
 	 */
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws IOException {
 		Stack pila = null;
 		int opcion = 0;
 		int filas = 0;
@@ -45,7 +48,7 @@ public class Principal {
 
 		do {
 			opcion = Integer.parseInt(JOptionPane.showInputDialog(
-					"--- MENU PRINCIPAL ---\n1. Crear un terreno.\n2. Lectura de un terreno.\n3. Escritura de un terreno.\n4. Generar acciones posibles.\n5. Realizar una accion. \n6. Salir"));
+					"--- MENU PRINCIPAL ---\n1. Crear un terreno.\n2. Lectura de un terreno.\n3. Escritura de un terreno.\n4. Generar acciones posibles.\n5. Realizar una accion. \n 6 frontera cola \n7. Salir"));
 			switch (opcion) {
 			case 1:
 				xt = Integer.parseInt(JOptionPane.showInputDialog("Introduzca Xt"));
@@ -94,20 +97,80 @@ public class Principal {
 			case 5:
 				ter.MovimientosValidos();
 				pila=ter.DistribuirCantidades();
-				
+				System.out.println("movimientos posibles");
 				int cont=0;
 				while(cont <pila.size())
 				{	
 					System.out.println(pila.elementAt(cont));
 					cont++; 
 				}
-				ter.generarAccion(pila);
+				
+				Random rn =new Random();
+				String elegido=null;
+				if(pila.size()>0) 
+				{
+					
+				elegido=(String) pila.elementAt(rn.nextInt(pila.size()-1));
+				System.out.println("\nMovimiento elegido:"+elegido+"cantidad a distribuir: "+(cas[ter.getxt()][ter.getyt()].getCantidad()-ter.getK()));
+				
+				ter.generarAccion(elegido);
 				System.out.println("\nTerreno actual");
-				ter.imprimirTerreno();
-				break;
+				ter.imprimirTerreno();}
+			else {
+				System.out.println("No hay movimientos posibles");
 			}
+				break;
+				
+			case 6:
+				// Iniciamos la frontera
+		 		 PriorityQueue<Nodo> cola = new PriorityQueue();
+		 		 FronteraColaPrioridad f = new FronteraColaPrioridad(cola);  
+		 		   //Le pasamos el nodo raíz
+		 		 Estado e = new Estado(ter);
+		 		 Nodo n = new Nodo(e,"nodoRaiz");
+		 		 f.insertar(n);
+		 		 // Tomaremos tiempos en las siguientes cantidades de extracciones en nuestra estructura
+		 		   int[] tomaTiempos = {3000,10000,25000,50000,100000,500000,1000000,3000000};
+		 		   Stack <Sucesor> sucesores; 
+		 		  int extraccionesCola = 0;
+		 		   long tiempoInicialCola = System.currentTimeMillis();
+		 			
+		 		   Nodo nabCola;
+		 			  int contador=0;
+		 		   for(;;) {
+		 			   
+		 			
+		 		     nabCola=f.Elimina();
+		 		     
+		 		   //  nabCola.getEstado().getTerreno().imprimirTerreno();
+		 		     extraccionesCola++;
+		 		     
+		 		     for(int j=0; j<tomaTiempos.length; j++)
+		 		    	 if(extraccionesCola == tomaTiempos[j]) {
+		 		    		long tiempoFinalCola = System.currentTimeMillis();
+		 		 			System.out.println("\nFrontera (Cola con prioridad) con " + tomaTiempos[j] +" extracciones realizada en " + (tiempoFinalCola-tiempoInicialCola) + " milisegundos."); 
+		 		    	 }
+
+		 			 
+		 		   
+		 			 sucesores = nabCola.getEstado().calculaSucesores(nabCola);
+		 			  			
+		 			 while(!sucesores.isEmpty())
+		 			 {
+		 			
+		 			  Sucesor suc = sucesores.pop();
+		 			  Nodo nodo = new Nodo(nabCola,suc.getAccion(),suc.getCosto(),suc.getEstado());
+		 			  //nodo.getEstado().getPuzzle().EscribirArray();
+		 			  //System.out.println(" "+nodo.getAccion());
+		 			  f.insertar(nodo);
+		 			  
+		 			 }
+		 		contador++;  }  
+		 		   
+			}
+		
 		}
 
-		while (opcion != 6);
+		while (opcion != 7);
 	}
 }
