@@ -5,7 +5,7 @@ import java.util.Stack;
 
 import javax.swing.JOptionPane;
 
-public class principal {
+public class Principal {
 
 	/*
 	 * -- Metodo principal --
@@ -32,13 +32,13 @@ public class principal {
 		int yt = 0;
 		int k = 0;
 		int max = 0;
-		casilla[][] cas = null;
-		terreno ter = new terreno();
+		Casilla[][] cas = null;
+		Terreno ter = new Terreno();
 		int[] tamFich;
 
 		tamFich = ter.tamañoTerrenoFichero();
-		cas = new casilla[tamFich[0]][tamFich[1]];//
-		ter = new terreno(cas);
+		cas = new Casilla[tamFich[0]][tamFich[1]];//
+		ter = new Terreno(cas);
 		ter.leerTerreno();// cargamos un fichero de prueba para que no de error.
 		System.out.println("terreno actual:");
 		ter.imprimirTerreno();
@@ -61,15 +61,15 @@ public class principal {
 				// max=Integer.parseInt(JOptionPane.showInputDialog("Introduzca número de
 				// columnas:"));
 
-				cas = new casilla[filas][columnas];
-				ter = new terreno(cas, xt, yt, k, max, filas, columnas);
+				cas = new Casilla[filas][columnas];
+				ter = new Terreno(cas, xt, yt, k, max, filas, columnas);
 				ter.crearTerreno(max);
 				ter.imprimirTerreno();
 				break;
 			case 2:
 				tamFich = ter.tamañoTerrenoFichero();
-				cas = new casilla[tamFich[0]][tamFich[1]];
-				ter = new terreno(cas);
+				cas = new Casilla[tamFich[0]][tamFich[1]];
+				ter = new Terreno(cas);
 				ter.leerTerreno();
 				System.out.println("terreno leido");
 

@@ -16,9 +16,9 @@ import javax.swing.JOptionPane;
  * 
  *  */
 
-public class terreno {
+public class Terreno {
 	int filas, columnas;
-	casilla cas[][];
+	Casilla cas[][];
 	int xt = 0;
 	int yt = 0;
 	int k = 0;
@@ -40,16 +40,16 @@ public class terreno {
 	int f = 0;
 	int[] MovimientosPosibles = new int[4];
 
-	public terreno() {
+	public Terreno() {
 
 	}
 
-	public terreno(casilla cas[][]) {
+	public Terreno(Casilla cas[][]) {
 		this.cas = cas;
 
 	}
 
-	public terreno(casilla cas[][], int x, int y, int k, int max, int f, int c) {
+	public Terreno(Casilla cas[][], int x, int y, int k, int max, int f, int c) {
 		this.cas = cas;
 		this.xt = x;
 		this.yt = y;
@@ -75,10 +75,10 @@ public class terreno {
 			for (int j = 0; j < cas[i].length; j++) {
 				if (V>0) {
 				sel = rn.nextInt(p);
-				cas[i][j] = new casilla(sel, i, j);
+				cas[i][j] = new Casilla(sel, i, j);
 				V = V - sel;
 				}
-				else cas[i][j] = new casilla(0, i, j);
+				else cas[i][j] = new Casilla(0, i, j);
 			}
 		System.out.println("V vale "+V);
 		do {
@@ -99,7 +99,7 @@ public class terreno {
 						sel = rn.nextInt(p);
 					}
 					while((cas[i][j].getCantidad()+sel)>=p || V-sel<0);
-				cas[i][j] = new casilla(cas[i][j].getCantidad()+sel, i, j);
+				cas[i][j] = new Casilla(cas[i][j].getCantidad()+sel, i, j);
 				V = V - sel;
 				}
 			}
@@ -124,7 +124,7 @@ public class terreno {
 
 		for (int i = 0; i < cas.length; i++)
 			for (int j = 0; j < cas[i].length; j++) {
-				cas[i][j] = new casilla(datos.nextInt(), i - 1, j);
+				cas[i][j] = new Casilla(datos.nextInt(), i - 1, j);
 			}
 		datos.close();
 	}
@@ -250,7 +250,7 @@ public class terreno {
 				fila=Integer.parseInt(elegido.substring(7+incr,8+incr));
 				columna=Integer.parseInt(elegido.substring(9+incr,10+incr));
 				cas[fila][columna]=
-					new casilla(cantAñadir+cas[fila][columna].getCantidad(),fila,columna);
+					new Casilla(cantAñadir+cas[fila][columna].getCantidad(),fila,columna);
 				incr=incr+8;
 				cas[xt][yt].setCantidad(cas[xt][yt].getCantidad()-cantAñadir);
 			}
@@ -328,7 +328,7 @@ public class terreno {
 		return f;
 	}
 
-	public casilla[][] getTerreno() {
+	public Casilla[][] getTerreno() {
 		return cas;
 	}
 
