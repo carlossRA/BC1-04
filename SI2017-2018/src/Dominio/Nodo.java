@@ -4,66 +4,47 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Stack;
 
-
-
-
-public class Nodo implements Comparable <Nodo> {
+public class Nodo implements Comparable<Nodo> {
 
 	private Nodo nodoPadre;
-	private Estado estado;  
+	private Estado estado;
 	private int costo;
 	private int profundidad;
 	private float valor;
 	private String accion;
-	
+
 	// Constructor para el caso del nodo raiz
 	public Nodo(Estado estado, String accion) {
-			this.nodoPadre = null;
-			this.estado = estado;
-			this.costo = 0;
-			this.profundidad = 0;
-			this.valor = 0;
-			this.accion = accion;
+		this.nodoPadre = null;
+		this.estado = estado;
+		this.costo = 0;
+		this.profundidad = 0;
+		this.valor = 0;
+		this.accion = accion;
 	}
-	
-	// Constructor para el caso del resto de nodos
-	public Nodo(Nodo nodoPadre, String accion, int costo,Estado estado) throws IOException {
-			
-			this.nodoPadre = nodoPadre;
-			this.costo = costo;
-			this.profundidad = nodoPadre.getProfundidad() + 1;
-		
-			//Por el momento valor es un aleatorio entre 0 y 1000
-			
-			Random rn = new Random();
-			this.valor = rn.nextInt(1000);
-			this.accion = accion;
-		
-			// Definimos el estado como el del nodo padre mas el movimiento
-			//Para evitar cambiar el estado del nodo padre creamos un nuevo puzzle que no apunte al puzzle del estado padre
 
-		    this.estado=estado;
-		    
-		    
-		/*	switch(accion) {
-			case "izquierda":
-				puzzletemp.Movimiento(0);
-				this.estado = new Estado(puzzletemp);
-				break;
-			case "derecha":
-				puzzletemp.Movimiento(1);
-				this.estado = new Estado(puzzletemp);
-				break;
-			case "arriba":
-				puzzletemp.Movimiento(2);
-				this.estado = new Estado(puzzletemp);
-				break;
-			case "abajo":
-				puzzletemp.Movimiento(3);
-				this.estado = new Estado(puzzletemp);
-				break;
-			*/
-		
+	// Constructor para el caso del resto de nodos
+	public Nodo(Nodo nodoPadre, String accion, int costo, Estado estado) throws IOException {
+
+		this.nodoPadre = nodoPadre;
+		this.costo = costo;
+		this.profundidad = nodoPadre.getProfundidad() + 1;
+
+		// Por el momento valor es un aleatorio entre 0 y 1000
+
+		Random rn = new Random();
+		this.valor = rn.nextInt(1000);
+		this.accion = accion;
+
+		// Definimos el estado como el del nodo padre mas el movimiento
+		// Para evitar cambiar el estado del nodo padre creamos un nuevo puzzle que no
+		// apunte al puzzle del estado padre
+
+		this.estado = estado;
+
+		/*
+		 **/
+
 	}
 
 	public Nodo getNodoPadre() {
@@ -89,19 +70,16 @@ public class Nodo implements Comparable <Nodo> {
 	public double getValor() {
 		return valor;
 	}
-	
+
 	public int compareTo(Nodo otro) {
 		int res;
-		if(this.valor < otro.getValor()){
+		if (this.valor < otro.getValor()) {
 			res = -1;
 		} else {
 			res = 1;
 		}
 		return res;
-		
+
 	}
-	
-	
-	
-	
+
 }

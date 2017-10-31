@@ -87,149 +87,150 @@ public class Principal {
 			case 4:
 				ter.MovimientosValidos();// aqui saca direcciones
 				System.out.println("---------------");
-				pila=ter.DistribuirCantidades();
-				System.out.println("cantidad a distribuir: "+(ter.max()-ter.k())+"\n");
-				while(!pila.isEmpty())
-				{
+				pila = ter.DistribuirCantidades();
+				System.out.println("cantidad a distribuir: " + (ter.max() - ter.k()) + "\n");
+				while (!pila.isEmpty()) {
 					System.out.println(pila.pop());
 				}
-				/*ter.mostrarMovimientosPosibles();//aqui distribuye la cantidad*/
+				/* ter.mostrarMovimientosPosibles();//aqui distribuye la cantidad */
 				break;
 			case 5:
 				ter.MovimientosValidos();
-				pila=ter.DistribuirCantidades();
+				pila = ter.DistribuirCantidades();
 				System.out.println("movimientos posibles");
-				int cont=0;
-				while(cont <pila.size())
-				{	
+				int cont = 0;
+				while (cont < pila.size()) {
 					System.out.println(pila.elementAt(cont));
-					cont++; 
+					cont++;
 				}
-				
-				Random rn =new Random();
-				String elegido=null;
-				if(pila.size()>0) 
-				{
-					
-				elegido=(String) pila.elementAt(rn.nextInt(pila.size()-1));
-				System.out.println("\nMovimiento elegido:"+elegido+"cantidad a distribuir: "+(cas[ter.getxt()][ter.getyt()].getCantidad()-ter.getK()));
-				
-				ter.generarAccion(elegido);
-				System.out.println("\nTerreno actual");
-				ter.imprimirTerreno();}
-			else {
-				System.out.println("No hay movimientos posibles");
-			}
+
+				Random rn = new Random();
+				String elegido = null;
+				if (pila.size() > 0) {
+
+					elegido = (String) pila.elementAt(rn.nextInt(pila.size() - 1));
+					System.out.println("\nMovimiento elegido:" + elegido + "cantidad a distribuir: "
+							+ (cas[ter.getxt()][ter.getyt()].getCantidad() - ter.getK()));
+
+					ter.generarAccion(elegido);
+					System.out.println("\nTerreno actual");
+					ter.imprimirTerreno();
+				} else {
+					System.out.println("No hay movimientos posibles");
+				}
 				break;
-				
+
 			case 6:
 				// Iniciamos la frontera
-		 		 PriorityQueue<Nodo> cola = new PriorityQueue();
-		 		 FronteraColaPrioridad f = new FronteraColaPrioridad(cola);  
-		 		   //Le pasamos el nodo raíz
-		 		 Estado e = new Estado(ter);
-		 		 Nodo n = new Nodo(e,"nodoRaiz");
-		 		 f.insertar(n);
-		 		 // Tomaremos tiempos en las siguientes cantidades de extracciones en nuestra estructura
-		 		   int[] tomaTiempos = {3000,10000,25000,50000,100000,500000,1000000,3000000};
-		 		   Stack <Sucesor> sucesores; 
-		 		  int extraccionesCola = 0;
-		 		   long tiempoInicialCola = System.currentTimeMillis();
-		 			
-		 		   Nodo nabCola;
-		 			  int contador=0;
-		 		   for(;;) {
-		 			   
-		 			
-		 		     nabCola=f.Elimina();
-		 		     
-		 		   //  nabCola.getEstado().getTerreno().imprimirTerreno();
-		 		     extraccionesCola++;
-		 		     
-		 		     for(int j=0; j<tomaTiempos.length; j++)
-		 		    	 if(extraccionesCola == tomaTiempos[j]) {
-		 		    		long tiempoFinalCola = System.currentTimeMillis();
-		 		 			System.out.println("\nFrontera (Cola con prioridad) con " + tomaTiempos[j] +" extracciones realizada en " + (tiempoFinalCola-tiempoInicialCola) + " milisegundos."); 
-		 		    	 }
+				PriorityQueue<Nodo> cola = new PriorityQueue();
+				FronteraColaPrioridad f = new FronteraColaPrioridad(cola);
+				// Le pasamos el nodo raíz
+				Estado e = new Estado(ter);
+				Nodo n = new Nodo(e, "nodoRaiz");
+				f.insertar(n);
+				// Tomaremos tiempos en las siguientes cantidades de extracciones en nuestra
+				// estructura
+				int[] tomaTiempos = { 3000, 10000, 25000, 50000, 100000, 500000, 1000000, 3000000 };
+				Stack<Sucesor> sucesores;
+				int extraccionesCola = 0;
+				long tiempoInicialCola = System.currentTimeMillis();
 
-		 			 
-		 		   
-		 			 sucesores = nabCola.getEstado().calculaSucesores(nabCola);
-		 			  			
-		 			 while(!sucesores.isEmpty())
-		 			 {
-		 			
-		 			  Sucesor suc = sucesores.pop();
-		 			  Nodo nodo = new Nodo(nabCola,suc.getAccion(),suc.getCosto(),suc.getEstado());
-		 			  //nodo.getEstado().getPuzzle().EscribirArray();
-		 			  //System.out.println(" "+nodo.getAccion());
-		 			  f.insertar(nodo);
-		 			  
-		 			 }
-		 		contador++;  }  
+				Nodo nabCola;
+				int contador = 0;
+				for (;;) {
+
+					nabCola = f.Elimina();
+
+					// nabCola.getEstado().getTerreno().imprimirTerreno();
+					extraccionesCola++;
+
+					for (int j = 0; j < tomaTiempos.length; j++)
+						if (extraccionesCola == tomaTiempos[j]) {
+							long tiempoFinalCola = System.currentTimeMillis();
+							System.out.println("\nFrontera (Cola con prioridad) con " + tomaTiempos[j]
+									+ " extracciones realizada en " + (tiempoFinalCola - tiempoInicialCola)
+									+ " milisegundos.");
+						}
+
+					sucesores = nabCola.getEstado().calculaSucesores(nabCola);
+
+					while (!sucesores.isEmpty()) {
+
+						Sucesor suc = sucesores.pop();
+						Nodo nodo = new Nodo(nabCola, suc.getAccion(), suc.getCosto(), suc.getEstado());
+						// nodo.getEstado().getPuzzle().EscribirArray();
+						// System.out.println(" "+nodo.getAccion());
+						f.insertar(nodo);
+
+					}
+					contador++;
+				}
 			case 7:
-				  // Iniciamos la frontera
-		 		   double valorNodoInsertar;
-		 		   ArrayList<Nodo> lista = new ArrayList<Nodo>();
-				   FronteraArrayList a = new FronteraArrayList(lista);
-		 		
-		 		   //Le pasamos el nodo raíz
-		 		   Estado e2 = new Estado(ter);
-		 		   Nodo n2 = new Nodo(e2,"nodoRaiz");
-		 		   
-		 		   a.insertar(n2,0);
-		 		   
-		 		   // Tomaremos tiempos en las siguientes cantidades de extracciones en nuestra estructura
-		 		   int[] tomaTiempos2 = {3000,10000,25000,50000,100000,500000,1000000,3000000};
-		 		   Stack <Sucesor> sucesores2 = new Stack<Sucesor>(); 
-		 		   int extraccionesArrayList = 0;
-				   long tiempoInicialArrayList = System.currentTimeMillis();
-		 		   
-				   Nodo nabArray;
-				   
-		 		   for(;;) {
-		 			  
-		 			   	nabArray=a.Elimina();
-		 			    extraccionesArrayList++;
+				// Iniciamos la frontera
+				double valorNodoInsertar;
+				ArrayList<Nodo> lista = new ArrayList<Nodo>();
+				FronteraArrayList a = new FronteraArrayList(lista);
 
-		 			   for(int j=0; j<tomaTiempos2.length; j++)
-		 	 		    	 if(extraccionesArrayList == tomaTiempos2[j]) {
-		 	 		    		long tiempoFinalArrayList = System.currentTimeMillis();
-		 	 		 			System.out.println("\nFrontera (ArrayList) con " + tomaTiempos2[j] +" extracciones realizada en " + (tiempoFinalArrayList-tiempoInicialArrayList) + " milisegundos."); 
-		 	 		    	 }
-		 			    
-		 			  	//System.out.println("Sale: "+nabArray.getValor());
-		 			  	
-		 			  	sucesores2 = nabArray.getEstado().calculaSucesores(nabArray);
-		 				
-		 			  	while(!sucesores2.isEmpty()){
-		 			  		int m = 0;
-		 			  		int insertado = 0;
-		 			  		// Calculamos la posición de inserción
-		 			  		
-		 			  		Sucesor sucesorInsertar = sucesores2.pop();
-		 			  		
-		 			  	  Nodo nodo = new Nodo(nabArray,sucesorInsertar.getAccion(),sucesorInsertar.getCosto(),sucesorInsertar.getEstado());
-		 			  	    //nodo.getEstado().getPuzzle().EscribirArray();
-		 	 			    //System.out.println(" "+nodo.getAccion());
-		 			  		valorNodoInsertar = nodo.getValor();
-		 			  		
-		 			  		// Insertamos nodos
-		 			  		for(m=0;m<a.elementosArray();m++)
-		 			  			if(a.getElemento(m).getValor() >= valorNodoInsertar && insertado == 0) {
-		 			  				a.insertar(nodo, m);
-		 			  			    insertado = 1;
-		 			  			  
-		 			  		}
-		 			  		
-		 			  		// Si todos los "Valor" son menores o no hay nodos lo insertamos al final
-		 			  		if(insertado == 0)
-		 			  			a.insertar(nodo, a.elementosArray());
-		 			  	}
-		 			 }
+				// Le pasamos el nodo raíz
+				Estado e2 = new Estado(ter);
+				Nodo n2 = new Nodo(e2, "nodoRaiz");
+
+				a.insertar(n2, 0);
+
+				// Tomaremos tiempos en las siguientes cantidades de extracciones en nuestra
+				// estructura
+				int[] tomaTiempos2 = { 3000, 10000, 25000, 50000, 100000, 500000, 1000000, 3000000 };
+				Stack<Sucesor> sucesores2 = new Stack<Sucesor>();
+				int extraccionesArrayList = 0;
+				long tiempoInicialArrayList = System.currentTimeMillis();
+
+				Nodo nabArray;
+
+				for (;;) {
+
+					nabArray = a.Elimina();
+					extraccionesArrayList++;
+
+					for (int j = 0; j < tomaTiempos2.length; j++)
+						if (extraccionesArrayList == tomaTiempos2[j]) {
+							long tiempoFinalArrayList = System.currentTimeMillis();
+							System.out.println(
+									"\nFrontera (ArrayList) con " + tomaTiempos2[j] + " extracciones realizada en "
+											+ (tiempoFinalArrayList - tiempoInicialArrayList) + " milisegundos.");
+						}
+
+					// System.out.println("Sale: "+nabArray.getValor());
+
+					sucesores2 = nabArray.getEstado().calculaSucesores(nabArray);
+
+					while (!sucesores2.isEmpty()) {
+						int m = 0;
+						int insertado = 0;
+						// Calculamos la posición de inserción
+
+						Sucesor sucesorInsertar = sucesores2.pop();
+
+						Nodo nodo = new Nodo(nabArray, sucesorInsertar.getAccion(), sucesorInsertar.getCosto(),
+								sucesorInsertar.getEstado());
+						// nodo.getEstado().getPuzzle().EscribirArray();
+						// System.out.println(" "+nodo.getAccion());
+						valorNodoInsertar = nodo.getValor();
+
+						// Insertamos nodos
+						for (m = 0; m < a.elementosArray(); m++)
+							if (a.getElemento(m).getValor() >= valorNodoInsertar && insertado == 0) {
+								a.insertar(nodo, m);
+								insertado = 1;
+
+							}
+
+						// Si todos los "Valor" son menores o no hay nodos lo insertamos al final
+						if (insertado == 0)
+							a.insertar(nodo, a.elementosArray());
+					}
+				}
 			}
-			
-				
+
 		}
 
 		while (opcion != 8);

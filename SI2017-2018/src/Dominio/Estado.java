@@ -6,99 +6,67 @@ import java.util.Stack;
 public class Estado {
 	Terreno terreno;
 
-	public Estado(Terreno terreno){
+	public Estado(Terreno terreno) {
 		this.terreno = terreno;
 	}
-	
-	
+
 	public Terreno getTerreno() {
 		return terreno;
 	}
-	
-	// El estado sera valido si la imagen negra no se ha salido del tablero de juego.
-	/*public boolean EsValido(){
-		
-		Pieza[][] piezasReconstruir = puzzle.getPuzzleMatriz();
-		
-		// Si se halla coincidencia con la imagen negra se devuelve true, si no se devolverá false al final del metodo
-		for(int i=0;i<puzzle.filas;i++)
-			for(int j=0;j<puzzle.columnas;j++)
-				if(piezasReconstruir[i][j].getID() < 0) return false;
-		return true;
-	}*/
-	
-	/*
-	public boolean EsObjetivo(Puzzle puzzleResuelto){
-		
-		Casilla[][] terrenoObjetivo = terreno.getPuzzleResueltoMatriz();
-		Pieza[][] piezasReconstruir = terreno.getPuzzleMatriz();
-		
-		for(int i=0;i<puzzle.filas;i++)
-			for(int j=0;j<puzzle.columnas;j++)
-				if(piezasResuelto[i][j].getID() != piezasReconstruir[i][j].getID()) return false;
-		
-		return true;
-	}
-	*/
-	public Stack<Sucesor> calculaSucesores(Nodo nab) throws IOException{
-		Terreno padre=nab.getEstado().getTerreno();
-		Terreno sucesor=new Terreno();
-		
-		sucesor=copiarTerrenos(padre,sucesor);//los copio a mano por el problema de las referencias
-	  
-		
-		Estado suc;
-		Stack <Sucesor>sucesores =new Stack();
-		
-	
-		
-		padre.MovimientosValidos();
-		Stack<String> acciones=padre.DistribuirCantidades(); //obtengo los movimientos validos del padre
-		
-		// para evitar la misma referencia en memoria creo un nuevo puzzle hijo.
-		// si no lo creara de nuevo cambiaria el puzzle del padre.
-		
-	    String  aux; 
-	   
-		while(!acciones.isEmpty())
-		{   
-			
-			aux=acciones.pop();	
-              //  sucesor.imprimirTerreno();			
-				sucesor.generarAccion(aux);
-				//sucesor.imprimirTerreno();
-				suc=new Estado(sucesor);
-				//suc.getTerreno().imprimirTerreno();
-				sucesores.push(new Sucesor(aux,suc, 1));
-				sucesor=copiarTerrenos(padre,sucesor);
-				
-			
-		}	
 
+	// 
+	/*
+	 *  }
+	 */
+	public Stack<Sucesor> calculaSucesores(Nodo nab) throws IOException {
+		Terreno padre = nab.getEstado().getTerreno();
+		Terreno sucesor = new Terreno();
+
+		sucesor = copiarTerrenos(padre, sucesor);// los copio a mano por el problema de las referencias
+
+		Estado suc;
+		Stack<Sucesor> sucesores = new Stack();
+
+		padre.MovimientosValidos();
+		Stack<String> acciones = padre.DistribuirCantidades(); // obtengo los movimientos validos del padre
+
+		// para evitar la misma referencia en memoria creo un nuevo terrenp hijo.
+		// si no lo creara de nuevo cambiaria el terreno del padre.
+
+		String aux;
+
+		while (!acciones.isEmpty()) {
+
+			aux = acciones.pop();
+			
+			sucesor.generarAccion(aux);
 		
+			suc = new Estado(sucesor);
+			
+			sucesores.push(new Sucesor(aux, suc, 1));
+			sucesor = copiarTerrenos(padre, sucesor);
+
+		}
+
 		return sucesores;
 	}
 
-
 	private Terreno copiarTerrenos(Terreno padre, Terreno sucesor) {
-		
-		Casilla [][]terHijo=new Casilla[padre.getFilas()][padre.getColumnas()];
-		int aux=0;
-		for(int i=0;i<terHijo.length;i++)
-		{
-			for(int j=0;j<terHijo[i].length;j++)
-			{   
-				
-				aux=padre.getTerreno()[i][j].getCantidad();
-				terHijo[i][j]=new Casilla(aux,i,j);
-			
+
+		Casilla[][] terHijo = new Casilla[padre.getFilas()][padre.getColumnas()];
+		int aux = 0;
+		for (int i = 0; i < terHijo.length; i++) {
+			for (int j = 0; j < terHijo[i].length; j++) {
+
+				aux = padre.getTerreno()[i][j].getCantidad();
+				terHijo[i][j] = new Casilla(aux, i, j);
+
 			}
 		}
-		
-		
-		
-		sucesor=new Terreno(terHijo,padre.getxt(),padre.getyt(),padre.getK(),padre.max(),padre.getFilas(),padre.getColumnas());
+
+		sucesor = new Terreno(terHijo, padre.getxt(), padre.getyt(), padre.getK(), padre.max(), padre.getFilas(),
+				padre.getColumnas());
 		return sucesor;
 	}
-	
+
 }

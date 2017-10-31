@@ -30,8 +30,8 @@ public class Casilla {
 	public int getCantidad() {
 		return this.cantidad;
 	}
-	public void setCantidad(int cantidad)
-	{
-		this.cantidad=cantidad;
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 }
