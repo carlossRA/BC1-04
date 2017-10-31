@@ -2,6 +2,7 @@ package Dominio;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.Random;
 import java.util.Stack;
@@ -48,7 +49,7 @@ public class Principal {
 
 		do {
 			opcion = Integer.parseInt(JOptionPane.showInputDialog(
-					"--- MENU PRINCIPAL ---\n1. Crear un terreno.\n2. Lectura de un terreno.\n3. Escritura de un terreno.\n4. Generar acciones posibles.\n5. Realizar una accion. \n 6 frontera cola \n7. Salir"));
+					"--- MENU PRINCIPAL ---\n1. Crear un terreno.\n2. Lectura de un terreno.\n3. Escritura de un terreno.\n4. Generar acciones posibles.\n5. Realizar una accion. \n6 frontera  cola \n7 frontera array.\n8 Salir"));
 			switch (opcion) {
 			case 1:
 				xt = Integer.parseInt(JOptionPane.showInputDialog("Introduzca Xt"));
@@ -166,11 +167,71 @@ public class Principal {
 		 			  
 		 			 }
 		 		contador++;  }  
+			case 7:
+				  // Iniciamos la frontera
+		 		   double valorNodoInsertar;
+		 		   ArrayList<Nodo> lista = new ArrayList<Nodo>();
+				   FronteraArrayList a = new FronteraArrayList(lista);
+		 		
+		 		   //Le pasamos el nodo raíz
+		 		   Estado e2 = new Estado(ter);
+		 		   Nodo n2 = new Nodo(e2,"nodoRaiz");
 		 		   
+		 		   a.insertar(n2,0);
+		 		   
+		 		   // Tomaremos tiempos en las siguientes cantidades de extracciones en nuestra estructura
+		 		   int[] tomaTiempos2 = {3000,10000,25000,50000,100000,500000,1000000,3000000};
+		 		   Stack <Sucesor> sucesores2 = new Stack<Sucesor>(); 
+		 		   int extraccionesArrayList = 0;
+				   long tiempoInicialArrayList = System.currentTimeMillis();
+		 		   
+				   Nodo nabArray;
+				   
+		 		   for(;;) {
+		 			  
+		 			   	nabArray=a.Elimina();
+		 			    extraccionesArrayList++;
+
+		 			   for(int j=0; j<tomaTiempos2.length; j++)
+		 	 		    	 if(extraccionesArrayList == tomaTiempos2[j]) {
+		 	 		    		long tiempoFinalArrayList = System.currentTimeMillis();
+		 	 		 			System.out.println("\nFrontera (ArrayList) con " + tomaTiempos2[j] +" extracciones realizada en " + (tiempoFinalArrayList-tiempoInicialArrayList) + " milisegundos."); 
+		 	 		    	 }
+		 			    
+		 			  	//System.out.println("Sale: "+nabArray.getValor());
+		 			  	
+		 			  	sucesores2 = nabArray.getEstado().calculaSucesores(nabArray);
+		 				
+		 			  	while(!sucesores2.isEmpty()){
+		 			  		int m = 0;
+		 			  		int insertado = 0;
+		 			  		// Calculamos la posición de inserción
+		 			  		
+		 			  		Sucesor sucesorInsertar = sucesores2.pop();
+		 			  		
+		 			  	  Nodo nodo = new Nodo(nabArray,sucesorInsertar.getAccion(),sucesorInsertar.getCosto(),sucesorInsertar.getEstado());
+		 			  	    //nodo.getEstado().getPuzzle().EscribirArray();
+		 	 			    //System.out.println(" "+nodo.getAccion());
+		 			  		valorNodoInsertar = nodo.getValor();
+		 			  		
+		 			  		// Insertamos nodos
+		 			  		for(m=0;m<a.elementosArray();m++)
+		 			  			if(a.getElemento(m).getValor() >= valorNodoInsertar && insertado == 0) {
+		 			  				a.insertar(nodo, m);
+		 			  			    insertado = 1;
+		 			  			  
+		 			  		}
+		 			  		
+		 			  		// Si todos los "Valor" son menores o no hay nodos lo insertamos al final
+		 			  		if(insertado == 0)
+		 			  			a.insertar(nodo, a.elementosArray());
+		 			  	}
+		 			 }
 			}
-		
+			
+				
 		}
 
-		while (opcion != 7);
+		while (opcion != 8);
 	}
 }
