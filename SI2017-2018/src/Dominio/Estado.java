@@ -5,7 +5,22 @@ import java.util.Stack;
 
 public class Estado {
 	Terreno terreno;
-
+	Terreno ter;
+	Estado estado;
+	public Estado (Estado estado, Terreno ter){
+		
+		this.estado = estado;
+		this.ter = ter;
+	}
+	
+	
+	public Estado getEstado() {
+		return estado;
+	}
+	
+	/*public Terreno getTerreno() {
+		return ter;
+	}*/
 	public Estado(Terreno terreno) {
 		this.terreno = terreno;
 	}
