@@ -36,9 +36,7 @@ public class Nodo implements Comparable<Nodo> {
 		this.valor = rn.nextInt(1000);
 		this.accion = accion;
 
-		// Definimos el estado como el del nodo padre mas el movimiento
-		// Para evitar cambiar el estado del nodo padre creamos un nuevo puzzle que no
-		// apunte al puzzle del estado padre
+		
 
 		this.estado = estado;
 

@@ -1,6 +1,9 @@
 package Dominio;
 
 import java.util.PriorityQueue;
+import java.util.Stack;
+
+
 
 public class FronteraColaPrioridad {
 
@@ -17,6 +20,12 @@ public class FronteraColaPrioridad {
 
 		cola.offer(nodo);
 	}
+	public void insertaLista(Stack<Nodo> LN){
+		while(!LN.isEmpty()){
+			Nodo n = LN.pop();
+			insertar(n);
+		}
+	}//metodo añadido en la pract3
 
 	public void crearFronteraColaPrioridad() {
 		cola = new PriorityQueue<Nodo>();
