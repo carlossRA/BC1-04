@@ -71,11 +71,10 @@ public class Estado {
 		Casilla[][] terHijo = new Casilla[padre.getFilas()][padre.getColumnas()];
 		int aux = 0;
 		for (int i = 0; i < terHijo.length; i++) {
-			for (int j = 0; j < terHijo[i].length; j++) {
-
+			for (int j = 0; j < terHijo[i].length; j++) 
+			{
 				aux = padre.getTerreno()[i][j].getCantidad();
 				terHijo[i][j] = new Casilla(aux, i, j);
-
 			}
 		}
 

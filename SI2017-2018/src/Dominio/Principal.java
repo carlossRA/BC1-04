@@ -3,11 +3,14 @@ package Dominio;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
 import java.util.Stack;
 
 import javax.swing.JOptionPane;
+
+
 
 public class Principal {
 
@@ -49,7 +52,7 @@ public class Principal {
 
 		do {
 			opcion = Integer.parseInt(JOptionPane.showInputDialog(
-					"--- MENU PRINCIPAL ---\n1. Crear un terreno.\n2. Lectura de un terreno.\n3. Escritura de un terreno.\n4. Generar acciones posibles.\n5. Realizar una accion. \n6 Frontera cola \n7 Frontera array.\n8 Salir"));
+					"--- MENU PRINCIPAL ---\n1. Crear un terreno.\n2. Lectura de un terreno.\n3. Escritura de un terreno.\n4. Generar acciones posibles.\n5. Realizar una accion. \n6 Frontera cola. \n7 Frontera array. \n8 Algoritmo básico de búsqueda \n9 Salir"));
 			switch (opcion) {
 			case 1:
 				xt = Integer.parseInt(JOptionPane.showInputDialog("Introduzca Xt"));
@@ -229,10 +232,52 @@ public class Principal {
 							a.insertar(nodo, a.elementosArray());
 					}
 				}
+				case 8:
+					  int estrategiaElegida;
+			 		  int profMax = 9999;
+			 		  int incProf = 1;
+			 		  boolean solucionBusquedaAcotada = false;
+			 		  List<Nodo> ListaSolucion = new ArrayList<Nodo>();
+			 		  
+			 		  // Pedimos estrategia al usuario
+			 		    do {
+			 		    	estrategiaElegida = Integer.parseInt(JOptionPane.showInputDialog("-- MENU DE ESTRATEGIAS --\n1. Anchura\n2. Profundidad Simple\n3. Profundidad acotada\n4. Profundidad iterativa.\n5. Costo uniforme."));
+			 		    } while (estrategiaElegida < 1 || estrategiaElegida > 5);
+			 		    
+			 		  		  
+			 		  // Espacio de Estados inicial y Estado inicial, necesarios para definir el Problema
+			 		   //Estado estadoArbol =new Estado(puzzle);
+			 		
+			 		   //EspacioDeEstados espEstArbol = new EspacioDeEstados(estadoArbol, puzzle);
+			 		  
+			 		  // Inicializamos el problema
+			 		 // Problema prob = new Problema(espEstArbol, estadoArbol);
+			 		  
+			 		  //Inicializamos la busqueda
+			 		  //Busqueda b = new Busqueda(espEstArbol, estadoArbol);
+			 		 
+			 		  Terreno resuelto=ter;
+			 		  if(estrategiaElegida == 4)  incProf = Integer.parseInt(JOptionPane.showInputDialog("Introduzca incremento de profundidad: "));
+			 		 
+					  // Si la estrategia es busqueda acotada pedimos profundidad maxima y lanzamos la funcion de busqueda acotada
+			 		  if (estrategiaElegida == 3 || estrategiaElegida == 4)
+			 		  {
+			 			  profMax = Integer.parseInt(JOptionPane.showInputDialog("Introduzca profundidad maxima: "));
+			 			//  ListaSolucion = b.Busqueda_Acotada(prob,estrategiaElegida,profMax,resuelto); 
+			 		  } else 
+			 		  { 
+			 			  //ListaSolucion = b.Busqueda(prob, estrategiaElegida, profMax, incProf,resuelto);
+			 		  }
+			 
+			 		  CreaFichero cf = new CreaFichero(ListaSolucion);
+			 		  //cf.CreacionFichero(estrategiaElegida,puzzle,b.tiempoBusqueda);
+			 
+					
+				break;
 			}
-
+			
 		}
 
-		while (opcion != 8);
+		while (opcion != 9);
 	}
 }
