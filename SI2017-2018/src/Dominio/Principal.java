@@ -246,9 +246,9 @@ public class Principal {
 			 		    
 			 		  		  
 			 		  // Espacio de Estados inicial y Estado inicial, necesarios para definir el Problema
-			 		   //Estado estadoArbol =new Estado(puzzle);
+			 		   Estado estadoArbol =new Estado(ter);
 			 		
-			 		   //EspacioDeEstados espEstArbol = new EspacioDeEstados(estadoArbol, puzzle);
+			 		   EspacioDeEstados espEstArbol = new EspacioDeEstados(estadoArbol, ter);
 			 		  
 			 		  // Inicializamos el problema
 			 		 // Problema prob = new Problema(espEstArbol, estadoArbol);
