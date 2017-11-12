@@ -9,7 +9,7 @@ import java.util.Stack;
 	
 public class Busqueda {
 	
-/*	
+
 	long tiempoInicialBusqueda;
 	long tiempoBusqueda;
 	
@@ -28,8 +28,8 @@ public class Busqueda {
 		this.e = e;
 	}
 	
-	
-	public List<Nodo> Busqueda_Acotada(Problema p, int estrategiaBusqueda, int profMax,Puzzle resuelto) throws IOException{
+	/*
+	public List<Nodo> Busqueda_Acotada(Problema p,Estado e, int estrategiaBusqueda, int profMax,Terreno ter) throws IOException{
 		
 		
 		Nodo n = null;
@@ -52,14 +52,14 @@ public class Busqueda {
 		// Calculamos la posible solucion
 		while(solucion == false && !f.esVacia()){
 			n = f.Elimina();
-			if(p.EsMeta(n.getEstado(),resuelto)) {
+			if(p.EsMeta(n.getEstado(),ter)) {
 				solucion = true;
 				System.out.println("\nSolucion encontrada\n");
 				tiempoBusqueda = System.currentTimeMillis() - tiempoInicialBusqueda;
 			}
 			else 
 			{
-				LS = p.calculaSucesores(n.getEstado());
+				LS = e.calculaSucesores(n.getEstado());
 				LN = CreaListaNodosArbol(LS, n, profMax, estrategiaBusqueda);	
 				f.insertaLista(LN);
 				}

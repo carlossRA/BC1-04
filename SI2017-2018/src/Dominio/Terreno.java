@@ -23,6 +23,7 @@ public class Terreno {
 	int yt = 0;
 	int k = 0;
 	int V = 0;
+	Casilla casResuelto[][];
 	Stack<String> pila = new Stack();
 	/*
 	 * -- Variables --
@@ -551,6 +552,17 @@ public class Terreno {
 
 	public int getMax() {
 		return this.max;
+	}
+
+	public Casilla[][] getTerrenoResuelto() {
+		for(int i=0;i<f;i++)
+		{
+			for(int j=0;j<c;j++)
+			{
+				casResuelto[f][c].setCantidad(k);
+			}
+		}
+		return null;
 	}
 
 }

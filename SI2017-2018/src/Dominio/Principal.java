@@ -250,11 +250,11 @@ public class Principal {
 			 		
 			 		   EspacioDeEstados espEstArbol = new EspacioDeEstados(estadoArbol, ter);
 			 		  
-			 		  // Inicializamos el problema
-			 		 // Problema prob = new Problema(espEstArbol, estadoArbol);
+			 		  //Inicializamos el problema
+			 		   Problema prob = new Problema(espEstArbol, estadoArbol);
 			 		  
 			 		  //Inicializamos la busqueda
-			 		  //Busqueda b = new Busqueda(espEstArbol, estadoArbol);
+			 		   Busqueda b = new Busqueda(espEstArbol,estadoArbol);
 			 		 
 			 		  Terreno resuelto=ter;
 			 		  if(estrategiaElegida == 4)  incProf = Integer.parseInt(JOptionPane.showInputDialog("Introduzca incremento de profundidad: "));
