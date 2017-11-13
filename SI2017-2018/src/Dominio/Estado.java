@@ -35,6 +35,8 @@ public class Estado {
 	 */
 	public Stack<Sucesor> calculaSucesores(Nodo nab) throws IOException {
 		Terreno padre = nab.getEstado().getTerreno();
+	
+		
 		Terreno sucesor = new Terreno();
 
 		sucesor = copiarTerrenos(padre, sucesor);// los copio a mano por el problema de las referencias
@@ -44,23 +46,25 @@ public class Estado {
 
 		padre.MovimientosValidos();
 		Stack<String> acciones = padre.DistribuirCantidades(); // obtengo los movimientos validos del padre
-
+		
 		// para evitar la misma referencia en memoria creo un nuevo terrenp hijo.
 		// si no lo creara de nuevo cambiaria el terreno del padre.
 
 		String aux;
-
+		sucesor.MovimientosValidos();
+		
 		while (!acciones.isEmpty()) {
 
 			aux = acciones.pop();
 			
 			sucesor.generarAccion(aux);
-		
+		     
 			suc = new Estado(sucesor);
 			
 			sucesores.push(new Sucesor(aux, suc, 1));
+			
 			sucesor = copiarTerrenos(padre, sucesor);
-
+			sucesor.MovimientosValidos();
 		}
 
 		return sucesores;

@@ -14,7 +14,7 @@ public class Busqueda {
 	long tiempoBusqueda;
 	
 	EspacioDeEstados espEst = new EspacioDeEstados(null, null);
-	Estado e = new Estado (null);
+	Estado e ;
 	
 	PriorityQueue<Nodo> cola = new PriorityQueue<Nodo>();
 	FronteraColaPrioridad f =new FronteraColaPrioridad(cola);
@@ -43,6 +43,7 @@ public class Busqueda {
 		  
 		// Le pasamos el nodo raiz e inicializamos tiempo
 		tiempoInicialBusqueda = System.currentTimeMillis();
+		
 		Nodo nodoRaizArbol = new Nodo(e,"nodoRaiz");
 		f.insertar(nodoRaizArbol);
 		
@@ -50,8 +51,11 @@ public class Busqueda {
 		
 		
 		// Calculamos la posible solucion
-		while(solucion == false && !f.esVacia()){
+		while(solucion == false && !f.esVacia())
+		{
+
 			n = f.Elimina();
+			//n.getEstado().getTerreno().imprimirTerreno();
 			if(p.EsMeta(n.getEstado(),ter)) {
 				solucion = true;
 				System.out.println("\nSolucion encontrada\n");
@@ -59,10 +63,12 @@ public class Busqueda {
 			}
 			else 
 			{
+				
 				LS = e.calculaSucesores(n);
+				
 				LN = CreaListaNodosArbol(LS, n, profMax, estrategiaBusqueda);	
 				f.insertaLista(LN);
-				}
+			}
 		}
 	
 		

@@ -268,7 +268,7 @@ public class Principal {
 			 		  { 
 			 			  ListaSolucion = b.Busqueda(prob, estrategiaElegida, profMax, incProf,resuelto);
 			 		  }
-			 
+			 		  
 			 		  CreaFichero cf = new CreaFichero(ListaSolucion);
 			 		  cf.CreacionFichero(estrategiaElegida,ter,b.tiempoBusqueda);
 			 
