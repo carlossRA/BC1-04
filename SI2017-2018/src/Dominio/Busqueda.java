@@ -28,8 +28,8 @@ public class Busqueda {
 		this.e = e;
 	}
 	
-	/*
-	public List<Nodo> Busqueda_Acotada(Problema p,Estado e, int estrategiaBusqueda, int profMax,Terreno ter) throws IOException{
+	
+	public List<Nodo> Busqueda_Acotada(Problema p, int estrategiaBusqueda, int profMax,Terreno ter) throws IOException{
 		
 		
 		Nodo n = null;
@@ -59,7 +59,7 @@ public class Busqueda {
 			}
 			else 
 			{
-				LS = e.calculaSucesores(n.getEstado());
+				LS = e.calculaSucesores(n);
 				LN = CreaListaNodosArbol(LS, n, profMax, estrategiaBusqueda);	
 				f.insertaLista(LN);
 				}
@@ -147,7 +147,7 @@ public List<Nodo> Busqueda(Problema p, int estrategiaBusqueda, int profMax, int 
 		}
 		
 		return ListaSolucion;
-	}*/
+	}
 	
 }
 

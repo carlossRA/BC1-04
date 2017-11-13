@@ -23,7 +23,11 @@ public class Terreno {
 	int yt = 0;
 	int k = 0;
 	int V = 0;
-	Casilla casResuelto[][];
+	int max = 0;
+	int c = 0;
+	int f = 0;
+	int[] MovimientosPosibles = new int[4];
+	Casilla [][] casResuelto;
 	Stack<String> pila = new Stack();
 	/*
 	 * -- Variables --
@@ -36,11 +40,7 @@ public class Terreno {
 	 */
 
 	// github.com/carlossRA/BC1-04
-	int max = 0;
-	int c = 0;
-	int f = 0;
-	int[] MovimientosPosibles = new int[4];
-
+	
 	public Terreno() {
 
 	}
@@ -555,14 +555,16 @@ public class Terreno {
 	}
 
 	public Casilla[][] getTerrenoResuelto() {
+		casResuelto=new Casilla[f][c];
+		
 		for(int i=0;i<f;i++)
 		{
 			for(int j=0;j<c;j++)
 			{
-				casResuelto[f][c].setCantidad(k);
+				casResuelto[i][j]=new Casilla(k,i,j);
 			}
 		}
-		return null;
+		return casResuelto;
 	}
 
 }

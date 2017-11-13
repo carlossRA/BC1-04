@@ -33,11 +33,14 @@ public class Problema {
 	public boolean EsMeta(Estado e,Terreno terreno){
 	 	Terreno ter =e.getTerreno();
 		Casilla [][] terrenoResuelto = terreno.getTerrenoResuelto();
+		
 			Casilla[][] cas = ter.getTerreno();
+			
+			
 		for(int i=0;i<terreno.getFilas();i++)
 			for(int j=0;j<terreno.getColumnas();j++)
 			{
-				if(terrenoResuelto[i][j].getCantidad() != terrenoResuelto[i][j].getCantidad()) return false;
+				if(cas[i][j].getCantidad() != terrenoResuelto[i][j].getCantidad()) return false;
 			}
 			
 		

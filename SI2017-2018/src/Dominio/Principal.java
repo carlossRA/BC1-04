@@ -263,14 +263,14 @@ public class Principal {
 			 		  if (estrategiaElegida == 3 || estrategiaElegida == 4)
 			 		  {
 			 			  profMax = Integer.parseInt(JOptionPane.showInputDialog("Introduzca profundidad maxima: "));
-			 			//  ListaSolucion = b.Busqueda_Acotada(prob,estrategiaElegida,profMax,resuelto); 
+			 			  ListaSolucion = b.Busqueda_Acotada(prob,estrategiaElegida,profMax,resuelto); 
 			 		  } else 
 			 		  { 
-			 			  //ListaSolucion = b.Busqueda(prob, estrategiaElegida, profMax, incProf,resuelto);
+			 			  ListaSolucion = b.Busqueda(prob, estrategiaElegida, profMax, incProf,resuelto);
 			 		  }
 			 
 			 		  CreaFichero cf = new CreaFichero(ListaSolucion);
-			 		  //cf.CreacionFichero(estrategiaElegida,puzzle,b.tiempoBusqueda);
+			 		  cf.CreacionFichero(estrategiaElegida,ter,b.tiempoBusqueda);
 			 
 					
 				break;

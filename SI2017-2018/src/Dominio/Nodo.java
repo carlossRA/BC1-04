@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Stack;
 
+
 public class Nodo implements Comparable<Nodo> {
 
 	private Nodo nodoPadre;
@@ -43,6 +44,15 @@ public class Nodo implements Comparable<Nodo> {
 		/*
 		 **/
 
+	}
+	public Nodo(Nodo nodoPadre, String accion, int costo, Estado estado, float valor) throws IOException 
+	{
+		this.nodoPadre = nodoPadre;
+		this.costo = costo;
+		this.profundidad = nodoPadre.getProfundidad()+1;
+		this.valor = valor;
+		this.accion = accion;
+		this.estado=estado;
 	}
 
 	public Nodo getNodoPadre() {
