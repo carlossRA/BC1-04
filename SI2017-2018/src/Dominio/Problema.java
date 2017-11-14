@@ -49,28 +49,28 @@ public class Problema {
 	}
 	
 	/*public Stack<Sucesor> calculaSucesores(Estado e) throws IOException{
-		Puzzle padre=e.getPuzzle();
-		Pieza [][]a=padre.getPuzzleResueltoMatriz();
-		Puzzle sucesor=new Puzzle (padre.getPuzzleMatriz(),padre.getImagenNegroRedim());
+		Terreno padre=e.getTerreno();
+		Pieza [][]a=padre.getTerrenoResueltoMatriz();
+		Terreno sucesor=new Terreno (padre.getTerrenoMatriz(),padre.getImagenNegroRedim());
 		Stack <Sucesor>sucesores =new Stack();
 		
 		
 		int [] movimientos=padre.MovimientosValidos(); //obtengo los movimientos validos del padre
 	
-		// para evitar la misma referencia en memoria creo un nuevo puzzle hijo.
-		// si no lo creara de nuevo cambiaria el puzzle del padre.
+		// para evitar la misma referencia en memoria creo un nuevo Terreno hijo.
+		// si no lo creara de nuevo cambiaria el Terreno del padre.
 		
 	
 		for(int i=0;i<movimientos.length;i++)
 		{	
 			if(movimientos[i]==1){
 			
-				//movemos el puzzle para cambiar el estado del sucesor
+				//movemos el Terreno para cambiar el estado del sucesor
 				sucesor.Movimiento(i);
 				Estado estadoSucc=new Estado(sucesor);
 				//creamos el sucesor 
 				sucesores.push(new Sucesor(sucesor.MovimientoRealizado(i),estadoSucc, 1));
-				sucesor=new Puzzle (padre.getPuzzleMatriz(),padre.getImagenNegroRedim());
+				sucesor=new Terreno (padre.getTerrenoMatriz(),padre.getImagenNegroRedim());
 			}
 		}	
 		return sucesores;
