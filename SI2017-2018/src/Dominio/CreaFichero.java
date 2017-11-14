@@ -28,7 +28,7 @@ public class CreaFichero {
        pw = new PrintWriter(fichero);
       
        pw.println("Estrategia: "+estrategia+"\n ");
-       pw.println("Puzzle de "+ter.getFilas()+" filas y "+ter.getColumnas()+" columnas.");
+       pw.println("Terreno de "+ter.getFilas()+" filas y "+ter.getColumnas()+" columnas.");
        pw.println("Tiempo que tarda en ejecutarse el algoritmo: "+costeTemp+" ms.");
        pw.println("\n\nSolucion: ");
        while(listaSolucion.size()>1)

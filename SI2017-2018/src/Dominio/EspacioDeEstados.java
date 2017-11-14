@@ -19,7 +19,7 @@ public class EspacioDeEstados {
 		return estado;
 	}
 	
-	public Terreno getPuzzle() {
+	public Terreno getTerreno() {
 		return terreno;
 	}
 	
