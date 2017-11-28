@@ -26,13 +26,13 @@ public class EspacioDeEstados {
 	// El estado sera valido si el terreno no se ha salido del tablero de juego.
 	/*public boolean EsValido(){
 		
-		Casilla[][]  = estado.getPuzzle().getPuzzleMatriz();
-		int filas=estado.getPuzzle().getFilas();
-		int columnas=estado.getPuzzle().getColumnas();
-		// Si se halla coincidencia con la imagen negra se devuelve true, si no se devolvera false al final del metodo
+		Casilla[][]  = estado.getTerreno();
+		int filas=estado.getTerreno().getFilas();
+		int columnas=estado.getTerreno().getColumnas();
+		
 		for(int i=0;i<filas;i++)
 			for(int j=0;j<columnas;j++)
-				if(piezasReconstruir[i][j].getID() < 0) return false;
+				if(terreno[i][j].getID() < 0) return false;
 		return true;
 	}
 	*/

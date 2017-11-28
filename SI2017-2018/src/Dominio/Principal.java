@@ -241,8 +241,8 @@ public class Principal {
 			 		  
 			 		  // Pedimos estrategia al usuario
 			 		    do {
-			 		    	estrategiaElegida = Integer.parseInt(JOptionPane.showInputDialog("-- MENU DE ESTRATEGIAS --\n1. Anchura\n2. Profundidad Simple\n3. Profundidad acotada\n4. Profundidad iterativa.\n5. Costo uniforme."));
-			 		    } while (estrategiaElegida < 1 || estrategiaElegida > 5);
+			 		    	estrategiaElegida = Integer.parseInt(JOptionPane.showInputDialog("-- MENU DE ESTRATEGIAS --\n1. Anchura\n2. Profundidad Simple\n3. Profundidad acotada\n4. Profundidad iterativa.\n5. Costo uniforme.\n6. A*."));
+			 		    } while (estrategiaElegida < 1 || estrategiaElegida > 6);
 			 		    
 			 		  		  
 			 		  // Espacio de Estados inicial y Estado inicial, necesarios para definir el Problema

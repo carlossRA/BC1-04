@@ -130,6 +130,9 @@ public List<Nodo> Busqueda(Problema p, int estrategiaBusqueda, int profMax, int 
 				case 5:
 					valor = costo;
 					break;
+				case 6:
+					valor = costo + calculaHeuristica(sAux.getEstado());
+					break;
 				}
 				
 				Nodo nAux = new Nodo(n,sAux.getAccion(),costo,sAux.getEstado(), valor);
@@ -153,6 +156,13 @@ public List<Nodo> Busqueda(Problema p, int estrategiaBusqueda, int profMax, int 
 		}
 		
 		return ListaSolucion;
+	}
+	
+	public  int calculaHeuristica(Estado e) {
+		
+		Terreno p = e.getTerreno();
+				
+		return p.numeroTerrenoSinK(p);
 	}
 	
 }

@@ -566,5 +566,18 @@ public class Terreno {
 		}
 		return casResuelto;
 	}
+	
+	public int numeroTerrenoSinK(Terreno resuelto ) {
+    	Casilla[][] t =resuelto.getTerrenoResuelto();
+    	int terrenoSinK = 0;
+    	
+    	for (int i = 0; i < t.length; i++) {
+    		for(int j = 0;j<t[i].length;j++){
+    			if(t[i][j].cantidad!=k) terrenoSinK++;
+    		}
+    	}
+    	
+    	return terrenoSinK;
+    }
 
 }
