@@ -1,0 +1,7 @@
+Estrategia: ProfundidadAcotada
+ 
+Puzzle de 3 filas y 3 columnas.
+Tiempo que tarda en ejecutarse el algoritmo: 0 ms.
+
+
+Solucion: 
