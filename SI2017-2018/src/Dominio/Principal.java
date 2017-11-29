@@ -110,11 +110,13 @@ public class Principal {
 
 				Random rn = new Random();
 				String elegido = null;
+				int cantADist=cas[ter.getxt()][ter.getyt()].getCantidad() - ter.getK();
+				if(cantADist<0)cantADist=0;
 				if (pila.size() > 0) {
 
 					elegido = (String) pila.elementAt(rn.nextInt(pila.size() - 1));
 					System.out.println("\nMovimiento elegido:" + elegido + "cantidad a distribuir: "
-							+ (cas[ter.getxt()][ter.getyt()].getCantidad() - ter.getK()));
+							+ cantADist);
 
 					ter.generarAccion(elegido);
 					System.out.println("\nTerreno actual");
