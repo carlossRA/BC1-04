@@ -50,7 +50,7 @@ public class Terreno {
 
 	}
 
-	public Terreno(Casilla cas[][], int x, int y, int k, int max, int f, int c) {
+	public Terreno(Casilla cas[][], int x, int y, int k, int max, int c, int f) {
 		this.cas = cas;
 		this.xt = x;
 		this.yt = y;
@@ -118,7 +118,7 @@ public class Terreno {
 		k = datos.nextInt();
 		max = datos.nextInt();
 		c = datos.nextInt();
-		f = datos.nextInt();
+		f= datos.nextInt();
 
 		for (int i = 0; i < cas.length; i++)
 			for (int j = 0; j < cas[i].length; j++) {

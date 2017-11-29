@@ -69,7 +69,7 @@ public class Principal {
 				// columnas:"));
 
 				cas = new Casilla[filas][columnas];
-				ter = new Terreno(cas, xt, yt, k, max, filas, columnas);
+				ter = new Terreno(cas, xt, yt, k, max, columnas, filas);
 				ter.crearTerreno(max);
 				System.out.println("\nNuevo terreno");
 				ter.imprimirTerreno();
