@@ -1,7 +1,7 @@
 Estrategia: Anchura
  
 Terreno de 3 filas y 3 columnas.
-Tiempo que tarda en ejecutarse el algoritmo: 26528 ms.
+Tiempo que tarda en ejecutarse el algoritmo: 214355 ms.
 
 
 Solucion: 

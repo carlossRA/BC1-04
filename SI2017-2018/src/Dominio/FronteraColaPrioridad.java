@@ -7,6 +7,7 @@ import java.util.Stack;
 
 
 public class FronteraColaPrioridad {
+	boolean optimizo=false;
 	public static Hashtable<String, Integer> visited = new Hashtable<String, Integer>();
 	PriorityQueue<Nodo> cola = new PriorityQueue<Nodo>();
 
@@ -21,12 +22,18 @@ public class FronteraColaPrioridad {
 
 		cola.offer(nodo);
 	}
-	public void insertaLista(Stack<Nodo> LN,int est){
+	public void insertaLista(Stack<Nodo> LN,int est,boolean poda){
 		while(!LN.isEmpty()){
-			Nodo n = LN.pop(); 
+			Nodo n = LN.pop();
+			
+			if(poda) {
+				
 				   if(checkVisited(n, ObtenerEst(est))) insertar(n);
 			// If not optimization
-			  
+			}
+			else {
+				insertar(n);
+			}
 			
 			
 	}//metodo añadido en la pract3

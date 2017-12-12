@@ -63,10 +63,13 @@ public class Nodo implements Comparable<Nodo> {
 		return estado;
 	}
 
-	public int getCosto() {
+	public int getCostoAccion() {
 		return estado.getCosto();
 	}
-
+	public int GetCosto()
+	{
+		return costo;
+	}
 	public String getAccion() {
 		return accion;
 	}

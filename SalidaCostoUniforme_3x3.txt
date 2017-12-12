@@ -1,10 +1,18 @@
-Estrategia: A
+Estrategia: CostoUniforme
  
 Terreno de 3 filas y 3 columnas.
-Tiempo que tarda en ejecutarse el algoritmo: 726 ms.
+Tiempo que tarda en ejecutarse el algoritmo: 1081 ms.
 
 
 Solucion: 
+costo1
+costo2
+costo3
+costo2
+costo3
+costo2
+costo2
+costo3
 
 0 1 1 4 3 3
 3 3 2 
@@ -54,4 +62,3 @@ Solucion:
 1 1 1 
 2 2 (1 2 2),(0 1 1),(0 0 2),
 
-3

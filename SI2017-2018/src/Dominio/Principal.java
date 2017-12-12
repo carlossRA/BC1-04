@@ -165,7 +165,7 @@ public class Principal {
 					while (!sucesores.isEmpty()) {
 
 						Sucesor suc = sucesores.pop();
-						Nodo nodo = new Nodo(nabCola, suc.getAccion(), suc.getCosto(), suc.getEstado());
+						Nodo nodo = new Nodo(nabCola, suc.getAccion(), suc.getCostoAccion(), suc.getEstado());
 						// nodo.getEstado().getPuzzle().EscribirArray();
 						// System.out.println(" "+nodo.getAccion());
 						f.insertar(nodo);
@@ -218,7 +218,7 @@ public class Principal {
 
 						Sucesor sucesorInsertar = sucesores2.pop();
 
-						Nodo nodo = new Nodo(nabArray, sucesorInsertar.getAccion(), sucesorInsertar.getCosto(),
+						Nodo nodo = new Nodo(nabArray, sucesorInsertar.getAccion(), sucesorInsertar.getCostoAccion(),
 								sucesorInsertar.getEstado());
 						
 						valorNodoInsertar = nodo.getValor();
@@ -247,9 +247,14 @@ public class Principal {
 			 		    do {
 			 		    	estrategiaElegida = Integer.parseInt(JOptionPane.showInputDialog("-- MENU DE ESTRATEGIAS --\n1. Anchura\n2. Profundidad Simple\n3. Profundidad acotada\n4. Profundidad iterativa.\n5. Costo uniforme.\n6. A*."));
 			 		    } while (estrategiaElegida < 1 || estrategiaElegida > 6);
-			 		    
-			 		  		  
+			 		   int op=0;
+			 		    do { 
+			 		   op = Integer.parseInt(JOptionPane.showInputDialog("¿Quiere usar la poda ? 1(si) 2(no) ."));  
 			 		  // Espacio de Estados inicial y Estado inicial, necesarios para definir el Problema
+			 		   }while(op<1||op>2);
+			 		   boolean poda=false;
+			 		   if(op==1)poda=true;
+			 		   if(op==2)poda=false;
 			 		   Estado estadoArbol =new Estado(ter);
 			 		
 			 		   EspacioDeEstados espEstArbol = new EspacioDeEstados(estadoArbol, ter);
@@ -267,10 +272,10 @@ public class Principal {
 			 		  if (estrategiaElegida == 3 || estrategiaElegida == 4)
 			 		  {
 			 			  profMax = Integer.parseInt(JOptionPane.showInputDialog("Introduzca profundidad maxima: "));
-			 			  ListaSolucion = b.Busqueda_Acotada(prob,estrategiaElegida,profMax,resuelto); 
+			 			  ListaSolucion = b.Busqueda_Acotada(prob,estrategiaElegida,profMax,resuelto,poda); 
 			 		  } else 
 			 		  { 
-			 			  ListaSolucion = b.Busqueda(prob, estrategiaElegida, profMax, incProf,resuelto);
+			 			  ListaSolucion = b.Busqueda(prob, estrategiaElegida, profMax, incProf,resuelto,poda);
 			 		  }
 			 		  
 			 		  CreaFichero cf = new CreaFichero(ListaSolucion);

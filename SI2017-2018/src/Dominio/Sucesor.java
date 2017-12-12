@@ -28,7 +28,7 @@ public class Sucesor {
 		this.estado = estado;
 	}
 
-	public int getCosto() {
+	public int getCostoAccion() {
 		return estado.getCosto();
 	}
 

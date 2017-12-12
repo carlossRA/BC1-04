@@ -31,14 +31,17 @@ public class CreaFichero {
        pw.println("Terreno de "+ter.getFilas()+" filas y "+ter.getColumnas()+" columnas.");
        pw.println("Tiempo que tarda en ejecutarse el algoritmo: "+costeTemp+" ms.");
        pw.println("\n\nSolucion: ");
-       Nodo aux;
+       Nodo aux = null;
        while(listaSolucion.size()>1)
        {     aux=listaSolucion.remove(0);
  			 pilaSolucion.add(aux.getEstado().getTerreno().getTer()+aux.getAccion()+"\n");
+ 			   pw.println("costo"+aux.GetCosto());
        }
+       
  			 pw.println();
        while(!pilaSolucion.isEmpty())
            pw.println(pilaSolucion.pop());
+       	
    } catch (Exception e) {
        e.printStackTrace();
        }

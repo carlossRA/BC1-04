@@ -31,7 +31,7 @@ public class Busqueda {
 	}
 	
 	
-	public List<Nodo> Busqueda_Acotada(Problema p, int estrategiaBusqueda, int profMax,Terreno ter) throws IOException{
+	public List<Nodo> Busqueda_Acotada(Problema p, int estrategiaBusqueda, int profMax,Terreno ter,boolean poda) throws IOException{
 		
 		
 		Nodo n = null;
@@ -71,7 +71,7 @@ public class Busqueda {
 				LN = CreaListaNodosArbol(LS, n, profMax, estrategiaBusqueda);	
 			   
 				  
-					   f.insertaLista(LN,estrategiaBusqueda);
+					   f.insertaLista(LN,estrategiaBusqueda,poda);
 				   
 				
 			}
@@ -85,7 +85,7 @@ public class Busqueda {
 	}
 	
 	
-public List<Nodo> Busqueda(Problema p, int estrategiaBusqueda, int profMax, int incProf,Terreno resuelto) throws IOException{
+public List<Nodo> Busqueda(Problema p, int estrategiaBusqueda, int profMax, int incProf,Terreno resuelto,boolean poda) throws IOException{
 		
 	   List<Nodo> ListaSolucion = new ArrayList<Nodo>();
 	
@@ -95,7 +95,7 @@ public List<Nodo> Busqueda(Problema p, int estrategiaBusqueda, int profMax, int 
 		while(!solucion && profAct <= profMax) {
 			
 			
-			ListaSolucion = Busqueda_Acotada(p,estrategiaBusqueda,profAct,resuelto);
+			ListaSolucion = Busqueda_Acotada(p,estrategiaBusqueda,profAct,resuelto,poda);
 			profAct=profAct +incProf;
 		}
 		
@@ -118,7 +118,7 @@ public List<Nodo> Busqueda(Problema p, int estrategiaBusqueda, int profMax, int 
 			while(!LS.isEmpty()){
 				
 				sAux = LS.pop();
-				costo = n.getCosto() + sAux.getCosto();
+				costo = n.getCostoAccion() + sAux.getCostoAccion();
 												
 				switch (estrategiaBusqueda) {
 				case 1:					
