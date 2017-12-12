@@ -109,7 +109,7 @@ public List<Nodo> Busqueda(Problema p, int estrategiaBusqueda, int profMax, int 
 	public Stack<Nodo> CreaListaNodosArbol(Stack<Sucesor> LS, Nodo n, int profMax, int estrategiaBusqueda) throws IOException{
 		Stack <Nodo> LN = new Stack<Nodo>();
 		Sucesor sAux;
-		int profundidad, valor = 0, costo;
+		int profundidad, valor = 0, costo=0;
 		
 		if(n.getProfundidad()<profMax) {
 			profundidad = n.getProfundidad()+1; 
@@ -118,7 +118,7 @@ public List<Nodo> Busqueda(Problema p, int estrategiaBusqueda, int profMax, int 
 			while(!LS.isEmpty()){
 				
 				sAux = LS.pop();
-				costo = n.getCostoAccion() + sAux.getCostoAccion();
+				costo = n.GetCosto() + n.getCostoAccion();
 												
 				switch (estrategiaBusqueda) {
 				case 1:					

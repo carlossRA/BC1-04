@@ -591,9 +591,10 @@ public class Terreno {
 	}
 public int getCantADist()
 {   
-	int cantADist = cas[xt][yt].getCantidad() - k;
+	int cantADist=cas[xt][yt].getCantidad() -k;
+	if(cantADist<0)cantADist=0;
 
-if(cantADist<0)cantADist=0;
+
 	return cantADist;
 }
 }

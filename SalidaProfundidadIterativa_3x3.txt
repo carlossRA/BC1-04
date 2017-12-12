@@ -1,7 +1,7 @@
-Estrategia: ProfundidadAcotada
+Estrategia: ProfundidadIterativa
  
 Terreno de 3 filas y 3 columnas.
-Tiempo que tarda en ejecutarse el algoritmo: 633 ms.
+Tiempo que tarda en ejecutarse el algoritmo: 666 ms.
 
 
 Solucion: 

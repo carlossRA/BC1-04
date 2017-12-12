@@ -32,16 +32,20 @@ public class CreaFichero {
        pw.println("Tiempo que tarda en ejecutarse el algoritmo: "+costeTemp+" ms.");
        pw.println("\n\nSolucion: ");
        Nodo aux = null;
+       
        while(listaSolucion.size()>1)
        {     aux=listaSolucion.remove(0);
- 			 pilaSolucion.add(aux.getEstado().getTerreno().getTer()+aux.getAccion()+"\n");
- 			   pw.println("costo"+aux.GetCosto());
+ 			 pilaSolucion.add(aux.getEstado().getTerreno().getTer()+"-)Acción realizada en el estado anterior: "+aux.getAccion()+"\n-)costo hasta aquí:"+aux.GetCosto()+"\n");
+ 			  
        }
        
  			 pw.println();
-       while(!pilaSolucion.isEmpty())
+ 			 
+ 		pw.println("Nodo raíz: "+ter.getTer()+"Coste cero\n");	
+       while(!pilaSolucion.isEmpty()) {
            pw.println(pilaSolucion.pop());
-       	
+        
+       }
    } catch (Exception e) {
        e.printStackTrace();
        }
