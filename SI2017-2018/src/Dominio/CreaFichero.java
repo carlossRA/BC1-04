@@ -64,6 +64,8 @@ public class CreaFichero {
 		case 5:
 			estrategia="CostoUniforme";
 		break;
+		case 6:
+			estrategia="A";
 		}
 		return estrategia;
 		

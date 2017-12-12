@@ -29,7 +29,7 @@ public class Sucesor {
 	}
 
 	public int getCosto() {
-		return costo;
+		return estado.getCosto();
 	}
 
 	public void setCosto(int costo) {

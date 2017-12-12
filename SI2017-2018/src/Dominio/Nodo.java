@@ -13,7 +13,7 @@ public class Nodo implements Comparable<Nodo> {
 	private int profundidad;
 	private float valor;
 	private String accion;
-
+	
 	// Constructor para el caso del nodo raiz
 	public Nodo(Estado estado, String accion) {
 		this.nodoPadre = null;
@@ -64,7 +64,7 @@ public class Nodo implements Comparable<Nodo> {
 	}
 
 	public int getCosto() {
-		return costo;
+		return estado.getCosto();
 	}
 
 	public String getAccion() {
@@ -88,6 +88,15 @@ public class Nodo implements Comparable<Nodo> {
 		}
 		return res;
 
+	}
+	public String serialize() {
+		String serialized="@";
+		Casilla[][] s = estado.getTerreno().getTerreno();
+		for(int i=0; i<s.length; i++)
+			for(int j=0; j<s[i].length; j++)
+				serialized+=s[i][j];
+		serialized+="@"+estado.getTerreno().getxt()+estado.getTerreno().getxt();
+		return serialized;
 	}
 
 }

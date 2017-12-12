@@ -3,12 +3,14 @@ package Dominio;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Stack;
 	
 public class Busqueda {
-	
+	public static Hashtable<String, Integer> visited = new Hashtable<String, Integer>();
+	static boolean optimization = false;
 
 	long tiempoInicialBusqueda;
 	long tiempoBusqueda;
@@ -67,7 +69,11 @@ public class Busqueda {
 				LS = e.calculaSucesores(n);
 				
 				LN = CreaListaNodosArbol(LS, n, profMax, estrategiaBusqueda);	
-				f.insertaLista(LN);
+			   
+				  
+					   f.insertaLista(LN,estrategiaBusqueda);
+				   
+				
 			}
 		}
 	

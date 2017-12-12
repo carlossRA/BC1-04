@@ -92,7 +92,9 @@ public class Principal {
 				ter.MovimientosValidos();// aqui saca direcciones
 				System.out.println("---------------");
 				pila = ter.DistribuirCantidades();
-				System.out.println("\ncantidad a distribuir: " + (ter.max() - ter.k()) + "\n");
+				int cantADist=cas[ter.getxt()][ter.getyt()].getCantidad() - ter.getK();
+				if(cantADist<0)cantADist=0;
+				System.out.println("\ncantidad a distribuir: " + cantADist + "\n");
 				while (!pila.isEmpty()) {
 					System.out.println(pila.pop());
 				}
@@ -110,7 +112,7 @@ public class Principal {
 
 				Random rn = new Random();
 				String elegido = null;
-				int cantADist=cas[ter.getxt()][ter.getyt()].getCantidad() - ter.getK();
+				 cantADist=cas[ter.getxt()][ter.getyt()].getCantidad() - ter.getK();
 				if(cantADist<0)cantADist=0;
 				if (pila.size() > 0) {
 
