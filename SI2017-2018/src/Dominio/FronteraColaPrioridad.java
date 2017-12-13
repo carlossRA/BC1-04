@@ -80,7 +80,7 @@ public class FronteraColaPrioridad {
 
 	}
 	private static boolean checkVisited(Nodo node, String strategy) {
-		String serial = node.serializado();
+		String serial = node.serialize();
 		if(!visited.containsKey(serial)) {
 			visited.put(serial,(int) node.getValor());
 			return true;
