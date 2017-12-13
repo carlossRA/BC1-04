@@ -92,7 +92,7 @@ public class Nodo implements Comparable<Nodo> {
 		return res;
 
 	}
-	public String serialize() {
+	public String serializado() {
 		String serialized="@";
 		Casilla[][] s = estado.getTerreno().getTerreno();
 		for(int i=0; i<s.length; i++)
