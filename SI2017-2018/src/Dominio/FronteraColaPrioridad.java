@@ -36,7 +36,7 @@ public class FronteraColaPrioridad {
 			}
 			
 			
-	}//metodo añadido en la pract3
+	}//metodo aÃ±adido en la pract3
 	}
 	private String ObtenerEst(int est) {
 		String estg=null;
@@ -80,7 +80,7 @@ public class FronteraColaPrioridad {
 
 	}
 	private static boolean checkVisited(Nodo node, String strategy) {
-		String serial = node.serialize();
+		String serial = node.serializado();
 		if(!visited.containsKey(serial)) {
 			visited.put(serial,(int) node.getValor());
 			return true;
