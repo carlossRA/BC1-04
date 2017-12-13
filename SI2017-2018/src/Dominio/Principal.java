@@ -17,17 +17,17 @@ public class Principal {
 	/*
 	 * -- Metodo principal --
 	 * 
-	 * nos pide por teclado una serie de datos básicos para la creación de nuestro
+	 * nos pide por teclado una serie de datos bÃ¡sicos para la creaciÃ³n de nuestro
 	 * tablero.
 	 * 
 	 * -- variables --
 	 * 
-	 * opcion = almacena el valor de la acción del menú principal que elijamos.
-	 * filas y columnas = se recogen por teclado y en ellas se guardará el valor de
-	 * las filas y columnas que tendrá nuestro tablero. cas = es una matriz del tipo
+	 * opcion = almacena el valor de la acciÃ³n del menÃº principal que elijamos.
+	 * filas y columnas = se recogen por teclado y en ellas se guardarÃ¡ el valor de
+	 * las filas y columnas que tendrÃ¡ nuestro tablero. cas = es una matriz del tipo
 	 * casilla que nos permite crear tantas casillas como dimension vaya a tener
 	 * nuestro tablero. ter = es una variable tipo terreno a la que le daremos el
-	 * valor de nuestro terreno cuando esté creado.
+	 * valor de nuestro terreno cuando estÃ© creado.
 	 */
 
 	public static void main(String[] args) throws IOException {
@@ -43,7 +43,7 @@ public class Principal {
 		Terreno ter = new Terreno();
 		int[] tamFich;
 
-		tamFich = ter.tamañoTerrenoFichero();
+		tamFich = ter.tamaÃ±oTerrenoFichero();
 		cas = new Casilla[tamFich[0]][tamFich[1]];//
 		ter = new Terreno(cas);
 		ter.leerTerreno();// cargamos un fichero de prueba para que no de error.
@@ -52,7 +52,7 @@ public class Principal {
 
 		do {
 			opcion = Integer.parseInt(JOptionPane.showInputDialog(
-					"--- MENU PRINCIPAL ---\n1. Crear un terreno.\n2. Lectura de un terreno.\n3. Escritura de un terreno.\n4. Generar acciones posibles.\n5. Realizar una accion. \n6 Frontera cola. \n7 Frontera array. \n8 Algoritmo básico de búsqueda \n9 Salir"));
+					"--- MENU PRINCIPAL ---\n1. Crear un terreno.\n2. Lectura de un terreno.\n3. Escritura de un terreno.\n4. Generar acciones posibles.\n5. Realizar una accion. \n6 Frontera cola. \n7 Frontera array. \n8 Algoritmo bÃ¡sico de bÃºsqueda \n9 Salir"));
 			switch (opcion) {
 			case 1:
 				xt = Integer.parseInt(JOptionPane.showInputDialog("Introduzca Xt"));
@@ -62,10 +62,10 @@ public class Principal {
 				while (max < k) {
 					max = Integer.parseInt(JOptionPane.showInputDialog("Introduzca un valor mayor o igual que " + k));
 				}
-				filas = Integer.parseInt(JOptionPane.showInputDialog("Introduzca número de filas:"));
-				columnas = Integer.parseInt(JOptionPane.showInputDialog("Introduzca número de columnas:"));
+				filas = Integer.parseInt(JOptionPane.showInputDialog("Introduzca nÃºmero de filas:"));
+				columnas = Integer.parseInt(JOptionPane.showInputDialog("Introduzca nÃºmero de columnas:"));
 
-				// max=Integer.parseInt(JOptionPane.showInputDialog("Introduzca número de
+				// max=Integer.parseInt(JOptionPane.showInputDialog("Introduzca nÃºmero de
 				// columnas:"));
 
 				cas = new Casilla[filas][columnas];
@@ -75,7 +75,7 @@ public class Principal {
 				ter.imprimirTerreno();
 				break;
 			case 2:
-				tamFich = ter.tamañoTerrenoFichero();
+				tamFich = ter.tamaÃ±oTerrenoFichero();
 				cas = new Casilla[tamFich[0]][tamFich[1]];
 				ter = new Terreno(cas);
 				ter.leerTerreno();
@@ -132,7 +132,7 @@ public class Principal {
 				// Iniciamos la frontera
 				PriorityQueue<Nodo> cola = new PriorityQueue();
 				FronteraColaPrioridad f = new FronteraColaPrioridad(cola);
-				// Le pasamos el nodo raíz
+				// Le pasamos el nodo raÃ­z
 				Estado e = new Estado(ter);
 				Nodo n = new Nodo(e, "nodoRaiz");
 				f.insertar(n);
@@ -179,7 +179,7 @@ public class Principal {
 				ArrayList<Nodo> lista = new ArrayList<Nodo>();
 				FronteraArrayList a = new FronteraArrayList(lista);
 
-				// Le pasamos el nodo raíz
+				// Le pasamos el nodo raÃ­z
 				Estado e2 = new Estado(ter);
 				Nodo n2 = new Nodo(e2, "nodoRaiz");
 
@@ -214,7 +214,7 @@ public class Principal {
 					while (!sucesores2.isEmpty()) {
 						int m = 0;
 						int insertado = 0;
-						// Calculamos la posición de inserción
+						// Calculamos la posiciÃ³n de inserciÃ³n
 
 						Sucesor sucesorInsertar = sucesores2.pop();
 
@@ -249,7 +249,7 @@ public class Principal {
 			 		    } while (estrategiaElegida < 1 || estrategiaElegida > 6);
 			 		   int op=0;
 			 		    do { 
-			 		   op = Integer.parseInt(JOptionPane.showInputDialog("¿Quiere usar la poda ? 1(si) 2(no) ."));  
+			 		   op = Integer.parseInt(JOptionPane.showInputDialog("Â¿Quiere usar la poda ? 1(si) 2(no) ."));  
 			 		  // Espacio de Estados inicial y Estado inicial, necesarios para definir el Problema
 			 		   }while(op<1||op>2);
 			 		   boolean poda=false;
@@ -269,17 +269,19 @@ public class Principal {
 			 		  if(estrategiaElegida == 4)  incProf = Integer.parseInt(JOptionPane.showInputDialog("Introduzca incremento de profundidad: "));
 			 		 
 					  // Si la estrategia es busqueda acotada pedimos profundidad maxima y lanzamos la funcion de busqueda acotada
-			 		  if (estrategiaElegida == 3 || estrategiaElegida == 4)
+			 		 if(estrategiaElegida == 3 || estrategiaElegida == 4) 
+			 			 profMax = Integer.parseInt(JOptionPane.showInputDialog("Introduzca profundidad maxima: "));
+			 		 
+					  // Si la estrategia es busqueda acotada pedimos incremento de profundidad y lanzamos Busqueda, si no lanzamos Busqueda_Acotada
+			 		  if (estrategiaElegida == 4)
 			 		  {
-			 			  profMax = Integer.parseInt(JOptionPane.showInputDialog("Introduzca profundidad maxima: "));
-			 			  ListaSolucion = b.Busqueda_Acotada(prob,estrategiaElegida,profMax,resuelto,poda); 
+			 			 incProf = Integer.parseInt(JOptionPane.showInputDialog("Introduzca incremento de profundidad: "));
+			 			 ListaSolucion = b.Busqueda(prob, estrategiaElegida, profMax, incProf,resuelto,poda);
+			 
 			 		  } else 
 			 		  { 
-			 			  ListaSolucion = b.Busqueda(prob, estrategiaElegida, profMax, incProf,resuelto,poda);
+				     	  ListaSolucion = b.Busqueda_Acotada(prob,estrategiaElegida,profMax,resuelto,poda);   
 			 		  }
-			 		  
-			 		  CreaFichero cf = new CreaFichero(ListaSolucion);
-			 		  cf.CreacionFichero(estrategiaElegida,ter,b.tiempoBusqueda);
 			 
 					
 				break;
