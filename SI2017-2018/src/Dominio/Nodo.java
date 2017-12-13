@@ -97,8 +97,8 @@ public class Nodo implements Comparable<Nodo> {
 		Casilla[][] s = estado.getTerreno().getTerreno();
 		for(int i=0; i<s.length; i++)
 			for(int j=0; j<s[i].length; j++)
-				serialized+=s[i][j];
-		serialized+="@"+estado.getTerreno().getxt()+estado.getTerreno().getxt();
+				serialized+=s[i][j].getCantidad();
+		serialized+="@"+estado.getTerreno().getxt()+estado.getTerreno().getyt();
 		return serialized;
 	}
 
