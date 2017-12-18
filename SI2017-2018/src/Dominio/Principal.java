@@ -43,7 +43,7 @@ public class Principal {
 		Terreno ter = new Terreno();
 		int[] tamFich;
 
-		tamFich = ter.tamaÃ±oTerrenoFichero();
+		tamFich = ter.tamañoTerrenoFichero();
 		cas = new Casilla[tamFich[0]][tamFich[1]];//
 		ter = new Terreno(cas);
 		ter.leerTerreno();// cargamos un fichero de prueba para que no de error.
@@ -75,7 +75,7 @@ public class Principal {
 				ter.imprimirTerreno();
 				break;
 			case 2:
-				tamFich = ter.tamaÃ±oTerrenoFichero();
+				tamFich = ter.tamañoTerrenoFichero();
 				cas = new Casilla[tamFich[0]][tamFich[1]];
 				ter = new Terreno(cas);
 				ter.leerTerreno();
