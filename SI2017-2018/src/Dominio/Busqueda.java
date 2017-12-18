@@ -111,9 +111,13 @@ public List<Nodo> Busqueda(Problema p, int estrategiaBusqueda, int profMax, int 
 		Sucesor sAux;
 		int profundidad, valor = 0, costo=0;
 		
+			//if(n.getAccion().equals("nodoRaiz"))
+				
+		
 		if(n.getProfundidad()<profMax) {
 			profundidad = n.getProfundidad()+1; 
 			System.out.println("Profundidad actual: " + profundidad);
+			
 			
 			while(!LS.isEmpty()){
 				
