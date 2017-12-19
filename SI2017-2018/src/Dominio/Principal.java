@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 
 
 
+
+
 public class Principal {
 
 	/*
@@ -266,7 +268,6 @@ public class Principal {
 			 		   Busqueda b = new Busqueda(espEstArbol,estadoArbol);
 			 		 
 			 		  Terreno resuelto=ter;
-			 		  if(estrategiaElegida == 4)  incProf = Integer.parseInt(JOptionPane.showInputDialog("Introduzca incremento de profundidad: "));
 			 		 
 					  // Si la estrategia es busqueda acotada pedimos profundidad maxima y lanzamos la funcion de busqueda acotada
 			 		 if(estrategiaElegida == 3 || estrategiaElegida == 4) 
@@ -282,7 +283,9 @@ public class Principal {
 			 		  { 
 				     	  ListaSolucion = b.Busqueda_Acotada(prob,estrategiaElegida,profMax,resuelto,poda);   
 			 		  }
-			 
+			 	
+			 		  CreaFichero cf = new CreaFichero(ListaSolucion);
+			 		  cf.CreacionFichero(estrategiaElegida,ter,b.tiempoBusqueda,poda);
 					
 				break;
 			}

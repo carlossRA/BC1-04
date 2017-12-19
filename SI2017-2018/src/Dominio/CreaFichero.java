@@ -14,7 +14,7 @@ public class CreaFichero {
 		this.listaSolucion = listaSolucion;
 	}
 	
-	public void CreacionFichero(int opcion,Terreno ter,long costeTemp) throws IOException{
+	public void CreacionFichero(int opcion,Terreno ter,long costeTemp,boolean poda) throws IOException{
 	  // Generacion de salida en fichero de texto con la solucion
 	 FileWriter fichero = null;
      PrintWriter pw = null;
@@ -26,26 +26,29 @@ public class CreaFichero {
   	   String estrategia=calculaEstrategia(opcion);
        fichero = new FileWriter("Salida"+estrategia+"_"+ter.getFilas()+"x"+ter.getColumnas()+".txt");
        pw = new PrintWriter(fichero);
-      
+       pw.println("poda: "+poda);
        pw.println("Estrategia: "+estrategia+"\n ");
        pw.println("Terreno de "+ter.getFilas()+" filas y "+ter.getColumnas()+" columnas.");
        pw.println("Tiempo que tarda en ejecutarse el algoritmo: "+costeTemp+" ms.");
        pw.println("\n\nSolucion: ");
        Nodo aux = null;
-       
+      
        while(listaSolucion.size()>1)
        {     aux=listaSolucion.remove(0);
- 			 pilaSolucion.add(aux.getEstado().getTerreno().getTer()+"-)Acción realizada en el estado anterior: "+aux.getAccion()+"\n-)costo hasta aquí:"+aux.GetCosto()+"\n");
+       
+ 			 pilaSolucion.add(aux.getEstado().getTerreno().getTer()+"-)Acción realizada en el estado anterior: "+aux.getAccion()+"\n-)costo hasta aquí:"+aux.GetCosto()+
+ 					 "\n-)Profundidad "+aux.getProfundidad()+"\n");
  			  
        }
        
  			 pw.println();
  			 
- 		pw.println("Nodo raíz: "+ter.getTer()+"Coste cero\n");	
+ 		pw.println("Nodo raíz:\n "+ter.getTer()+"-)Coste cero\n"+"-)Profundidad:1\n");	
        while(!pilaSolucion.isEmpty()) {
            pw.println(pilaSolucion.pop());
         
        }
+    
    } catch (Exception e) {
        e.printStackTrace();
        }
