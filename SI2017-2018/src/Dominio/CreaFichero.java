@@ -43,7 +43,7 @@ public class CreaFichero {
        
  			 pw.println();
  			 
- 		pw.println("Nodo raíz:\n "+ter.getTer()+"-)Coste cero\n"+"-)Profundidad:1\n");	
+ 		pw.println("Nodo raíz:\n"+ter.getTer()+"-)Coste cero\n"+"-)Profundidad:1\n");	
        while(!pilaSolucion.isEmpty()) {
            pw.println(pilaSolucion.pop());
         

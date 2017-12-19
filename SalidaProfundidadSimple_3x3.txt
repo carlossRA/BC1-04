@@ -1,0 +1,209 @@
+poda: true
+Estrategia: ProfundidadSimple
+ 
+Terreno de 3 filas y 3 columnas.
+Tiempo que tarda en ejecutarse el algoritmo: 7 ms.
+
+
+Solucion: 
+
+Nodo raíz:
+1 1 1 4 3 3
+3 3 2 
+0 0 0 
+0 1 0 
+-)Coste cero
+-)Profundidad:1
+
+1 0 1 4 3 3
+3 3 2 
+0 0 0 
+0 1 0 
+-)Acción realizada en el estado anterior: 1 0 (0 2 1),(0 1 0),(0 0 1),(0 1 2),
+-)costo hasta aquí:1
+-)Profundidad 2
+
+0 0 1 4 3 3
+3 3 2 
+0 0 0 
+0 1 0 
+-)Acción realizada en el estado anterior: 0 0 (0 2 0),(0 1 1),(0 0 0),
+-)costo hasta aquí:2
+-)Profundidad 3
+
+1 0 1 4 3 3
+1 4 2 
+1 0 0 
+0 1 0 
+-)Acción realizada en el estado anterior: 1 0 (1 0 1),(1 1 0),
+-)costo hasta aquí:5
+-)Profundidad 4
+
+2 0 1 4 3 3
+1 4 2 
+1 0 0 
+0 1 0 
+-)Acción realizada en el estado anterior: 2 0 (0 2 0),(0 1 1),(0 0 0),
+-)costo hasta aquí:6
+-)Profundidad 5
+
+2 1 1 4 3 3
+1 4 2 
+1 0 0 
+0 1 0 
+-)Acción realizada en el estado anterior: 2 1 (0 2 1),(0 1 0),
+-)costo hasta aquí:7
+-)Profundidad 6
+
+2 2 1 4 3 3
+1 4 2 
+1 0 0 
+0 1 0 
+-)Acción realizada en el estado anterior: 2 2 (0 2 0),(0 2 2),(0 1 1),
+-)costo hasta aquí:8
+-)Profundidad 7
+
+1 2 1 4 3 3
+1 4 2 
+1 0 0 
+0 1 0 
+-)Acción realizada en el estado anterior: 1 2 (0 2 1),(0 1 2),
+-)costo hasta aquí:9
+-)Profundidad 8
+
+0 2 1 4 3 3
+1 4 2 
+1 0 0 
+0 1 0 
+-)Acción realizada en el estado anterior: 0 2 (0 2 2),(0 1 1),(0 0 2),
+-)costo hasta aquí:10
+-)Profundidad 9
+
+0 1 1 4 3 3
+1 4 1 
+1 0 1 
+0 1 0 
+-)Acción realizada en el estado anterior: 0 1 (0 0 1),(1 1 2),
+-)costo hasta aquí:12
+-)Profundidad 10
+
+0 0 1 4 3 3
+2 1 3 
+1 0 1 
+0 1 0 
+-)Acción realizada en el estado anterior: 0 0 (1 0 0),(0 1 1),(2 0 2),
+-)costo hasta aquí:16
+-)Profundidad 11
+
+1 0 1 4 3 3
+1 2 3 
+1 0 1 
+0 1 0 
+-)Acción realizada en el estado anterior: 1 0 (1 0 1),(0 1 0),
+-)costo hasta aquí:18
+-)Profundidad 12
+
+2 0 1 4 3 3
+1 2 3 
+1 0 1 
+0 1 0 
+-)Acción realizada en el estado anterior: 2 0 (0 2 0),(0 1 1),(0 0 0),
+-)costo hasta aquí:19
+-)Profundidad 13
+
+2 1 1 4 3 3
+1 2 3 
+1 0 1 
+0 1 0 
+-)Acción realizada en el estado anterior: 2 1 (0 2 1),(0 1 0),
+-)costo hasta aquí:20
+-)Profundidad 14
+
+2 2 1 4 3 3
+1 2 3 
+1 0 1 
+0 1 0 
+-)Acción realizada en el estado anterior: 2 2 (0 2 0),(0 2 2),(0 1 1),
+-)costo hasta aquí:21
+-)Profundidad 15
+
+1 2 1 4 3 3
+1 2 3 
+1 0 1 
+0 1 0 
+-)Acción realizada en el estado anterior: 1 2 (0 2 1),(0 1 2),
+-)costo hasta aquí:22
+-)Profundidad 16
+
+0 2 1 4 3 3
+1 2 3 
+1 0 1 
+0 1 0 
+-)Acción realizada en el estado anterior: 0 2 (0 2 2),(0 1 1),(0 0 2),
+-)costo hasta aquí:23
+-)Profundidad 17
+
+1 2 1 4 3 3
+1 3 1 
+1 0 2 
+0 1 0 
+-)Acción realizada en el estado anterior: 1 2 (1 0 1),(1 1 2),
+-)costo hasta aquí:26
+-)Profundidad 18
+
+0 2 1 4 3 3
+1 3 1 
+1 0 1 
+0 1 1 
+-)Acción realizada en el estado anterior: 0 2 (1 2 2),(0 1 1),(0 0 2),
+-)costo hasta aquí:28
+-)Profundidad 19
+
+0 1 1 4 3 3
+1 3 1 
+1 0 1 
+0 1 1 
+-)Acción realizada en el estado anterior: 0 1 (0 0 1),(0 1 2),
+-)costo hasta aquí:29
+-)Profundidad 20
+
+0 2 1 4 3 3
+1 1 2 
+1 1 1 
+0 1 1 
+-)Acción realizada en el estado anterior: 0 2 (0 0 0),(1 1 1),(1 0 2),
+-)costo hasta aquí:32
+-)Profundidad 21
+
+1 2 1 4 3 3
+1 1 1 
+1 1 2 
+0 1 1 
+-)Acción realizada en el estado anterior: 1 2 (0 0 1),(1 1 2),
+-)costo hasta aquí:34
+-)Profundidad 22
+
+2 2 1 4 3 3
+1 1 1 
+1 1 1 
+0 1 2 
+-)Acción realizada en el estado anterior: 2 2 (1 2 2),(0 1 1),(0 0 2),
+-)costo hasta aquí:36
+-)Profundidad 23
+
+2 1 1 4 3 3
+1 1 1 
+1 1 1 
+0 2 1 
+-)Acción realizada en el estado anterior: 2 1 (1 2 1),(0 1 2),
+-)costo hasta aquí:38
+-)Profundidad 24
+
+1 1 1 4 3 3
+1 1 1 
+1 1 1 
+1 1 1 
+-)Acción realizada en el estado anterior: 1 1 (1 2 0),(0 2 2),(0 1 1),
+-)costo hasta aquí:40
+-)Profundidad 25
+

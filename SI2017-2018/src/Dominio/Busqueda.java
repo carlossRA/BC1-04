@@ -9,7 +9,7 @@ import java.util.PriorityQueue;
 import java.util.Stack;
 	
 public class Busqueda {
-	public static Hashtable<String, Integer> visited = new Hashtable<String, Integer>();
+	
 	static boolean optimization = false;
 
 	long tiempoInicialBusqueda;
@@ -17,9 +17,9 @@ public class Busqueda {
 	
 	EspacioDeEstados espEst = new EspacioDeEstados(null, null);
 	Estado e ;
-	
+	Hashtable<String, Integer> visited = new Hashtable<String, Integer>();	
 	PriorityQueue<Nodo> cola = new PriorityQueue<Nodo>();
-	FronteraColaPrioridad f =new FronteraColaPrioridad(cola);
+	FronteraColaPrioridad f =new FronteraColaPrioridad(cola,visited);
 	
 	boolean solucion;
 	
@@ -38,10 +38,10 @@ public class Busqueda {
 	
 		Stack <Sucesor> LS = new Stack<Sucesor>();
 		Stack <Nodo> LN = new Stack<Nodo>();
-				
+	   Hashtable<String, Integer> visited = new Hashtable<String, Integer>();		
 		// Iniciamos la frontera
 		PriorityQueue<Nodo> cola = new PriorityQueue();
-		FronteraColaPrioridad f = new FronteraColaPrioridad(cola);
+		FronteraColaPrioridad f = new FronteraColaPrioridad(cola,visited);
 		  
 		// Le pasamos el nodo raiz e inicializamos tiempo
 		tiempoInicialBusqueda = System.currentTimeMillis();

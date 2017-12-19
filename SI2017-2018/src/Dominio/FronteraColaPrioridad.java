@@ -9,15 +9,20 @@ import java.util.Stack;
 public class FronteraColaPrioridad {
 	boolean optimizo=false;
 	public static Hashtable<String, Integer> visited = new Hashtable<String, Integer>();
-	PriorityQueue<Nodo> cola = new PriorityQueue<Nodo>();
+	static PriorityQueue<Nodo> cola = new PriorityQueue<Nodo>();
 
+	public FronteraColaPrioridad(PriorityQueue<Nodo> cola,Hashtable <String,Integer>visited)
+
+	{
+		this.cola = cola;
+		this.visited=visited;
+	}
 	public FronteraColaPrioridad(PriorityQueue<Nodo> cola)
 
 	{
 		this.cola = cola;
-
+		
 	}
-
 	public void insertar(Nodo nodo) {
 
 		cola.offer(nodo);
@@ -28,7 +33,7 @@ public class FronteraColaPrioridad {
 			
 			if(poda) {
 				
-				   if(checkVisited(n, ObtenerEst(est))) insertar(n);
+				  if( checkVisited(n, ObtenerEst(est))) insertar(n);
 			// If not optimization
 			}
 			else {
@@ -82,15 +87,25 @@ public class FronteraColaPrioridad {
 	private static boolean checkVisited(Nodo node, String strategy) {
 		String serial = node.serialize();
 		if(!visited.containsKey(serial)) {
-			visited.put(serial,(int) node.getValor());
+			visited.put(serial,ObtenerValor(node,strategy));
 			return true;
+			
 		}else {
-			if(visited.get(serial) > node.getValor()) { /****/
+			if(visited.get(serial) >ObtenerValor(node,strategy) ) { /****/
 				visited.remove(serial);
-				visited.put(serial, (int) node.getValor());
+				visited.put(serial,ObtenerValor(node,strategy));
 				return true;
+				
 			}else {/*No nothing*/  return false;}
 		}
+		
+	}
+	private static int ObtenerValor(Nodo node,String strategy) {
+		if(strategy.equals("BFS") || strategy.equals("DFS") || strategy.equals("DLS") || strategy.equals("IDS"))
+			return node.GetCosto();
+		else
+			return (int)node.getValor();
+		
 	}
 	
 }

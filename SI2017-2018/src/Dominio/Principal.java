@@ -3,6 +3,7 @@ package Dominio;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
@@ -54,7 +55,7 @@ public class Principal {
 
 		do {
 			opcion = Integer.parseInt(JOptionPane.showInputDialog(
-					"--- MENU PRINCIPAL ---\n1. Crear un terreno.\n2. Lectura de un terreno.\n3. Escritura de un terreno.\n4. Generar acciones posibles.\n5. Realizar una accion. \n6 Frontera cola. \n7 Frontera array. \n8 Algoritmo básico de búsqueda \n9 Salir"));
+					"--- MENU PRINCIPAL ---\n1. Crear un terreno.\n2. Lectura de un terreno.\n3. Escritura de un terreno.\n4. Generar acciones posibles.\n5. Realizar una accion. \n6 Frontera cola. \n7 Frontera array. \n8 Algoritmo basico de busqueda \n9 Salir"));
 			switch (opcion) {
 			case 1:
 				xt = Integer.parseInt(JOptionPane.showInputDialog("Introduzca Xt"));
@@ -133,6 +134,7 @@ public class Principal {
 			case 6:
 				// Iniciamos la frontera
 				PriorityQueue<Nodo> cola = new PriorityQueue();
+				
 				FronteraColaPrioridad f = new FronteraColaPrioridad(cola);
 				// Le pasamos el nodo raíz
 				Estado e = new Estado(ter);
@@ -251,7 +253,7 @@ public class Principal {
 			 		    } while (estrategiaElegida < 1 || estrategiaElegida > 6);
 			 		   int op=0;
 			 		    do { 
-			 		   op = Integer.parseInt(JOptionPane.showInputDialog("¿Quiere usar la poda ? 1(si) 2(no) ."));  
+			 		   op = Integer.parseInt(JOptionPane.showInputDialog("�Quiere usar la poda ? 1(si) 2(no) ."));  
 			 		  // Espacio de Estados inicial y Estado inicial, necesarios para definir el Problema
 			 		   }while(op<1||op>2);
 			 		   boolean poda=false;
